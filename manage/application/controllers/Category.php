@@ -31,25 +31,23 @@ Class Category extends CI_Controller {
 	}
 
 	public function editForm($id){
-		$this->load->model('Manage_Career_Model');
-		$careerdetails = $this->Manage_Career_Model->getcareerdetails($id);
-		$this->load->view('career-edit',['careerdetails'=>$careerdetails]);
+		$categorydetails = $this->Manage_Category_Model->getcategorydetails($id);
+		$this->load->view('category_edit',['categorydetails'=>$categorydetails]);
 	}
 
-	public function editCareer(){
-		$id = $_REQUEST['id'];
-		
+	public function editcategory(){
 		$data = array(
-			'rec_date' => date('Y-m-d H:i:s'),
-			'title' => $_REQUEST['co_title'],
-			'descriptions' => $_REQUEST['co_description'],
-			'isActive' => 1
+			'category_name' => $_REQUEST['categoryname'],
+			'category_slug' => $_REQUEST['categoryslug'],
+			'parent_category' => $_REQUEST['parentcategory'],
+			'category_type' => $_REQUEST['categorytype'],
+			'category_status' => $_REQUEST['categorystatus'],
+			'updated_date' => date('Y-m-d H:i:s'),
 		);
 		
-		$this->load->model('Manage_Career_Model');
-		$response = $this->Manage_Career_Model->editcareer($id, $data);
+		$response = $this->Manage_Category_Model->editcategory($_REQUEST['categoryid'], $data);
 
-		redirect('career');
+		redirect('Category');
 	}
 
 

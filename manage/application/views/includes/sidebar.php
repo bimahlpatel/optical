@@ -9,7 +9,7 @@
               <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
               <div id="sidebar-menu">
                 <ul class="sidebar-links" id="simple-bar">
-                  <li class="back-btn"><a href="index.html"><img class="img-fluid" src="<?php echo base_url()?>assets/images/logo/logo-icon.png" alt=""></a>
+                  <li class="back-btn">
                     <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
                   </li>
                   
@@ -19,13 +19,11 @@
                     </div>
                   </li>
                   <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                   <a class="sidebar-link sidebar-title" href="#">
+                   <a class="sidebar-link sidebar-title" href="<?php echo base_url('dashboard')?>">
                       <svg class="stroke-icon">
                         <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#stroke-home"></use>
                       </svg>
-                      <svg class="fill-icon">
-                        <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#fill-home"></use>
-                      </svg><span class="lan-3">Dashboard</span></a>
+                      <span class="lan-3">Dashboard</span></a>
                   </li>
                  
                  
@@ -125,22 +123,7 @@
                       <h6>Miscellaneous</h6>
                     </div>
                   </li>
-                  <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title" href="#">
-                      <svg class="stroke-icon">
-                        <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#stroke-gallery"></use>
-                      </svg>
-                      <svg class="fill-icon">
-                        <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#fill-gallery"></use>
-                      </svg><span>Gallery</span></a>
-                    <ul class="sidebar-submenu">
-                      <li><a href="gallery.html">Gallery Grid</a></li>
-                      <li><a href="gallery-with-description.html">Gallery Grid Desc</a></li>
-                      <li><a href="gallery-masonry.html">Masonry Gallery</a></li>
-                      <li><a href="masonry-gallery-with-disc.html">Masonry with Desc</a></li>
-                      <li><a href="gallery-hover.html">Hover Effects</a></li>
-                    </ul>
-                  </li>
-                 
+                  
                   <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="faq.html">
                       <svg class="stroke-icon">
                         <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#stroke-faq"></use>
@@ -148,7 +131,29 @@
                       <svg class="fill-icon">
                         <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#fill-faq"></use>
                       </svg><span>FAQ</span></a></li>
-                                  </ul>
+
+                      <li class="sidebar-main-title">
+                    <div>
+                      <h6>Page Setting</h6>
+                    </div>
+                  </li>
+                  <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                      <a class="sidebar-link sidebar-title link-nav" href="faq.html">
+                      <svg class="stroke-icon">
+                        <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#stroke-faq"></use>
+                      </svg>
+                      <svg class="fill-icon">
+                        <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#fill-faq"></use>
+                      </svg><span>Site Setting</span></a></li>
+
+                  <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="faq.html">
+                      <svg class="stroke-icon">
+                        <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#stroke-faq"></use>
+                      </svg>
+                      <svg class="fill-icon">
+                        <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#fill-faq"></use>
+                      </svg><span>FAQ</span></a></li>
+                </ul>
               </div>
               <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
             </nav>
