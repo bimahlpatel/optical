@@ -26,6 +26,7 @@
     <?php echo link_tag('assets/css/vendors/scrollbar.css'); ?>
     <?php echo link_tag('assets/css/vendors/animate.css'); ?>
     <?php echo link_tag('assets/css/vendors/jquery.dataTables.css'); ?>
+    <?php echo link_tag('assets/css/vendors/dataTables.bootstrap5.css'); ?>
     <?php echo link_tag('assets/css/vendors/select.bootstrap5.css'); ?>
     <?php echo link_tag('assets/css/vendors/sweetalert2.css'); ?>
     <?php echo link_tag('assets/css/vendors/bootstrap.css'); ?>
