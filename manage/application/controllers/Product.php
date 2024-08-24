@@ -45,25 +45,76 @@ Class Product extends CI_Controller {
 		redirect('product');
 	}
 
-	public function editForm($id){
-		$categorydetails = $this->Manage_Category_Model->getcategorydetails($id);
-		$this->load->view('category_edit',['categorydetails'=>$categorydetails]);
+	public function editproduct($id){
+		$productlist = $this->Manage_Product_Model->getproductdetails($id);
+		$categorylist = $this->Manage_Category_Model->getcategorylist();
+		$this->load->view('edit_product',['productlist'=>$productlist, 'categorylist'=>$categorylist]);
 	}
 
-	public function editcategory(){
+	public function updateproduct(){
+
+		$product_image = "placeholder.jpg";
+
+		if($_FILES['product_image']['name'] != '') {
+			$product_image = $this->Manage_Product_Model->single_file_upload('product_image', 'product', 'jpg|gif|png|jpeg', 0, $_FILES['product_image']['name']);
+		}
+
 		$data = array(
-			'category_name' => $_REQUEST['categoryname'],
-			'category_slug' => $_REQUEST['categoryslug'],
-			'parent_category' => $_REQUEST['parentcategory'],
-			'category_type' => $_REQUEST['categorytype'],
-			'category_status' => $_REQUEST['categorystatus'],
+			'product_title' => $_REQUEST['productname'],
+			'product_slug' => $_REQUEST['productslug'],
+			'product_sku' => $_REQUEST['productsku'],
+			'product_cat_id' => $_REQUEST['productcategory'],
+			'product_description' =>$_REQUEST['product_desc'],
+			'product_image'=>$product_image,
 			'updated_date' => date('Y-m-d H:i:s'),
+			'isActive' => $_REQUEST['productstatus'],
 		);
 		
-		$response = $this->Manage_Category_Model->editcategory($_REQUEST['categoryid'], $data);
+		$response = $this->Manage_Product_Model->updateproduct($_REQUEST['productid'], $data);
 
-		redirect('Category');
+		redirect('product');
 	}
+
+	public function uploadgallary(){
+			$files = $_FILES;
+			$count = count($_FILES['file']['name']);
+			$uploadData = [];
+			$uploadPath = './uploads/';
+			
+			// Create the upload directory if it does not exist
+			if (!is_dir($uploadPath)) {
+				mkdir($uploadPath, 0755, true);
+			}
+	
+			for ($i = 0; $i < $count; $i++) {
+				$_FILES['file']['name'] = $files['file']['name'][$i];
+				$_FILES['file']['type'] = $files['file']['type'][$i];
+				$_FILES['file']['tmp_name'] = $files['file']['tmp_name'][$i];
+				$_FILES['file']['error'] = $files['file']['error'][$i];
+				$_FILES['file']['size'] = $files['file']['size'][$i];
+	
+				$config['upload_path'] = $uploadPath;
+				$config['allowed_types'] = 'gif|jpg|png';
+				$config['max_size'] = 2048; // 2MB
+				$config['max_width'] = 1024;
+				$config['max_height'] = 768;
+	
+				$this->upload->initialize($config);
+	
+				if ($this->upload->do_upload('file')) {
+					$uploadData[] = $this->upload->data();
+				} else {
+					$errors[] = $this->upload->display_errors();
+				}
+			}
+	
+			if (empty($errors)) {
+				echo json_encode(array('status' => 'success', 'files' => $uploadData));
+			} else {
+				echo json_encode(array('status' => 'error', 'errors' => $errors));
+			}
+		}
+
 
 
 }

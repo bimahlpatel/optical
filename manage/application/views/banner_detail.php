@@ -16,7 +16,7 @@
                  <div class="row">
                      <div class="col-6">
                          <h4>
-                             Display Category</h4>
+                             Display Banner</h4>
                      </div>
                      <div class="col-6">
                          <ol class="breadcrumb">
@@ -24,8 +24,7 @@
                                      <svg class="stroke-icon">
                                          <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#stroke-home"></use>
                                      </svg></a></li>
-                             <li class="breadcrumb-item">ECommerce</li>
-                             <li class="breadcrumb-item active">Category</li>
+                             <li class="breadcrumb-item active">Banner</li>
                          </ol>
                      </div>
                  </div>
@@ -42,7 +41,7 @@
                                      <div class="light-box"><a data-bs-toggle="collapse" href="#collapseProduct"
                                              role="button" aria-expanded="false" aria-controls="collapseProduct"><i
                                                  class="filter-icon show" data-feather="filter"></i><i
-                                                 class="icon-close filter-close hide"></i></a></div><a class="btn btn-primary f-w-500" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#dashboard8"><i class="fa fa-plus pe-2"></i>Add Category</a>
+                                                 class="icon-close filter-close hide"></i></a></div><a class="btn btn-primary f-w-500" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#dashboard8"><i class="fa fa-plus pe-2"></i>Add Banner</a>
                                  </div>
                                  
                              </div>
@@ -55,16 +54,16 @@
                                                      <input class="form-check-input checkbox-primary" type="checkbox">
                                                  </div>
                                              </th>
-                                             <th> <span class="f-light f-w-600">Category</span></th>
-                                             <th> <span class="f-light f-w-600">Parent Category</span></th>
-                                             <th> <span class="f-light f-w-600">Category For</span></th>
-                                             <th> <span class="f-light f-w-600">Status</span></th>
+                                             <th> <span class="f-light f-w-600">Banner Title</span></th>
+                                             <th> <span class="f-light f-w-600">Banner Subtitle</span></th>
+                                             <th> <span class="f-light f-w-600">Banner Image</span></th>
+                                             <th> <span class="f-light f-w-600">Banner Status</span></th>
                                              <th> <span class="f-light f-w-600">Action</span></th>
                                          </tr>
                                      </thead>
                                      <tbody>
-                                        <?php if(count($categorylist)){
-                                            foreach($categorylist as $row){?>
+                                        <?php if(count($bannerdetails) > 0){
+                                            foreach($bannerdetails as $row){?>
 
                                             <tr class="product-removes">
                                              <td>
@@ -74,25 +73,24 @@
                                              </td>
                                              <td>
                                                  <div class="product-names">
-                                                     <p><?php echo $row->category_name;?></p>
+                                                     <p><?php echo $row->title;?></p>
                                                  </div>
                                              </td>
                                              <td>
                                                  <div class="product-names">
-                                                     <p><?php echo $row->parent_category;?></p>
+                                                     <p><?php echo $row->sub_title;?></p>
                                                  </div>
                                              </td>
-                                             <td> <span class="badge badge-light-primary"><?php echo $row->category_type;?></span></td>
-                                             
+                                             <td> <span class="badge badge-light-primary"><img src="<?php echo COMPANY_SITE.'assets/uploads/banner/'.$row->image;?>" width="50" height="50"></span></td>
                                              <td>
                                                  <div class="product-names">
-                                                     <p><?php if($row->category_status == 0) { echo 'Active'; } else { echo 'Inactive'; };?></p>
+                                                     <p><?php if($row->is_active == 0) { echo 'Active'; } else { echo 'Inactive';}?></p>
                                                  </div>
                                              </td>
-                                            <td>
+                                             <td>
                                              <ul class="action"> 
-                                                    <li class="edit"> <a href="<?php echo base_url()?>category/editForm/<?php echo $row->category_id;?>"><i class="icon-pencil-alt"></i></a></li>
-                                                    <li class="delete"><a href="#"><i class="icon-trash"></i></a></li>
+                                                    <li class="edit"> <a href="<?php echo base_url()?>site/editbanner/<?php echo $row->id;?>"><i class="icon-pencil-alt"></i></a></li>
+                                                    <li class="delete"><a href="<?php echo base_url()?>site/deletebanner/<?php echo $row->is_active;?>/<?php echo $row->id;?>"><i class="icon-trash"></i></a></li>
                                                 </ul>
                                              </td>
                                          </tr>
@@ -127,61 +125,42 @@
                                  <div class="modal-body p-0 custom-input">
                                      <div class="text-start">
                                          <div class="p-20">
-                                             <form class="row g-3 needs-validation" novalidate="" action="<?php echo base_url()?>category/addCategory" method="post">
+                                             <form class="row g-3 needs-validation" novalidate="" action="<?php echo base_url()?>site/add_banner" method="post" enctype="multipart/form-data">
                                                  <div class="col-md-6">
-                                                     <label class="form-label" for="CategoryName">Category
+                                                     <label class="form-label" for="bannerName">Banner
                                                          Name<span class="txt-danger">*</span></label>
-                                                     <input class="form-control" name="categoryname" id="CategoryName" type="text"
-                                                         placeholder="Enter your category name" required="">
+                                                     <input class="form-control" name="bannername" id="bannerName" type="text"
+                                                         placeholder="Enter your banner name" required="">
                                                      <div class="invalid-feedback">
-                                                         Please enter a category name.</div>
+                                                         Please enter a banner name.</div>
                                                      <div class="valid-feedback">Looks good!</div>
                                                  </div>
+
                                                  <div class="col-md-6">
-                                                     <label class="form-label" for="categorySlug">Slug<span
-                                                             class="txt-danger">*</span></label>
-                                                     <input class="form-control" id="categorySlug" type="text"
-                                                         placeholder="Enter slug" name="categoryslug" required="">
+                                                     <label class="form-label" for="bannersubtitle">Banner
+                                                         Subtitle<span class="txt-danger">*</span></label>
+                                                     <input class="form-control" name="bannersubtitle" id="bannersubtitle" type="text"
+                                                         placeholder="Enter your banner subtitle" required="">
                                                      <div class="invalid-feedback">
-                                                         Please enter a slug name.</div>
+                                                         Please enter a banner subtitle.</div>
                                                      <div class="valid-feedback">Looks good!</div>
                                                  </div>
-                                                 <div class="col-md-12">
-                                                     <label class="form-label">Parent Category<span
-                                                             class="txt-danger">*</span></label>
-                                                     <select class="form-select" name="parentcategory" aria-label="Select parent category" required="">
-                                                        <option  value="">Select</option>
-                                                        <option  value="eyeglasses">EyeGlasses</option>
-                                                        <option  value="screenglasses">ScreenGlasses</option>
-                                                        <option  value="kidsglasses">KidsGlasses</option>
-                                                        <option  value="kidsglasses">SunGlasses</option>
-                                                     </select>
-                                                     <div class="invalid-feedback">
-                                                         Please choose a parent category.</div>
-                                                     <div class="valid-feedback">Looks good!</div>
-                                                 </div>
+                                                 
+                                                 <div class="col-md-6"> 
+                                                    <label class="form-label" for="bannerimg">Product Image</label>
+                                                    <input class="form-control" id="bannerimg" type="file" aria-label="file example" name="banner_image" required="">
+                                                    <div class="invalid-feedback">Invalid form file selected</div>
+                                                </div>
+
                                                  <div class="col-md-6">
-                                                     <label class="form-label">Category For<span
+                                                     <label class="form-label">Banner Status<span
                                                              class="txt-danger">*</span></label>
-                                                     <select class="form-select" name="categorytype" aria-label="Select category type" required="">
-                                                        <option value="">Select</option>
-                                                         <option  value="men">Men</option>
-                                                         <option  value="women">Women</option>
-                                                         <option  value="kids">kids</option>
-                                                     </select>
-                                                     <div class="invalid-feedback">
-                                                         Please choose a category type.</div>
-                                                     <div class="valid-feedback">Looks good!</div>
-                                                 </div>
-                                                 <div class="col-md-6">
-                                                     <label class="form-label">Category Status<span
-                                                             class="txt-danger">*</span></label>
-                                                     <select class="form-select" name="categorystatus" aria-label="Select category status" required="">
+                                                     <select class="form-select" name="bannerstatus" aria-label="Select banner status" required="">
                                                          <option selected="">Active</option>
                                                          <option value="1">Inactive</option>
                                                      </select>
                                                      <div class="invalid-feedback">
-                                                         Please choose a category status.</div>
+                                                         Please choose a banner status.</div>
                                                      <div class="valid-feedback">Looks good!</div>
                                                  </div>
                                                  

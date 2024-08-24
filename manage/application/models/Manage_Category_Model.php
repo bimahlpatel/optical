@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 Class Manage_Category_Model extends CI_Model {
 
 	public function getcategorylist(){
-		$query = $this->db->where('category_status', 1)
+		$query = $this->db->where('category_status', 0)
 				->order_by('category_id  asc')
 				->get('category');
 		return $query->result();      

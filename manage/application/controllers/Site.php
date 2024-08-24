@@ -5,6 +5,7 @@ Class Site extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('Manage_Site_Model');
+		$this->load->model('Manage_Product_Model');
 		if(! $this->session->userdata('adminid')) {
 			redirect('login');
 		}
@@ -33,6 +34,36 @@ Class Site extends CI_Controller {
 		redirect('site');
 	}
 
+	public function banner(){
+		$bannerdetails = $this->Manage_Site_Model->getsite_banner();
+		$this->load->view('banner_detail',['bannerdetails'=>$bannerdetails]);
+	}
+
+	public function add_banner(){
+		$product_image = "placeholder.jpg";
+
+		if($_FILES['banner_image']['name'] != '') {
+			$banner_image = $this->Manage_Product_Model->single_file_upload('banner_image', 'banner', 'jpg|gif|png|jpeg', 0, $_FILES['banner_image']['name']);
+		}
+
+		$data = array(
+			'title' => $_REQUEST['bannername'],
+			'sub_title' => $_REQUEST['bannersubtitle'],
+			'image' => $banner_image,
+			'is_active' => $_REQUEST['bannerstatus'],
+			
+		);
+		$response = $this->Manage_Site_Model->add_banner($data);
+
+		redirect('site/banner');
+	}
+
+	public function deletebanner($status,$id) {
+		
+		$this->Manage_Site_Model->deletecbanner($status, $id);
+		redirect('site/banner');
+	}
+
 	public function editPage($pagename){
 		$this->load->model('Manage_Site_Model');
 		$pagedetails = $this->Manage_Site_Model->getpagedetails($pagename);
@@ -50,28 +81,7 @@ Class Site extends CI_Controller {
 		redirect('site/editPage/'.$_REQUEST['page']);
 	}
 
-	public function updatewpcampmainoffer() {
-		$data = array(
-		 'rec_date' => date('Y-m-d H:i:s'),
-		 'option_value' => $_REQUEST['wpcampaignoffer']
-		);
-		$this->load->model('Manage_Site_Model');
-		$response = $this->Manage_Site_Model->updatesitesettingdata($data, 'wpcampaignoffer');
-
-		redirect('site/sitesettings');
-	}
-
-	public function updatewpcampmainsuccess() {
-		$data = array(
-		 'rec_date' => date('Y-m-d H:i:s'),
-		 'option_value' => $_REQUEST['wpcampaignsuccess']
-		);
-		$this->load->model('Manage_Site_Model');
-		$response = $this->Manage_Site_Model->updatesitesettingdata($data, 'wpcampaignsuccess');
-
-		redirect('site/sitesettings');
-	}
-
+	
 	public function uploadbulkfile(){
 		$this->load->library('csvimport');
 		$this->load->model('Manage_Site_Model');

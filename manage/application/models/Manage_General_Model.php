@@ -1,30 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-Class Manage_Product_Model extends CI_Model {
+Class Manage_General_Model extends CI_Controller {
 
-    public function getproductlist(){
 
-        $query = $this->db->select('p.*, c.category_name')
-				->from('product p')
-				->join('category c','c.category_id=p.product_cat_id')
-				->order_by('p.product_id desc')
-				->get()
-				->result();
-		return $query;
-	}
-
-	public function getproductdetails($id){
-		$query = $this->db->where('product_id', $id)
-				->get('product');
-		return $query->row();      
-	}
-
-	public function addproduct($data){
-		$this->db->insert('product',$data);
-		$category = $this->db->insert_id();
-		return ($this->db->affected_rows() != 1) ? false : true; 
-	}
-
+    
     public function single_file_upload($my_file, $file_path, $types="*", $thumb=1, $image_name) {
 		$this->load->library('upload');
 		
@@ -76,11 +55,5 @@ Class Manage_Product_Model extends CI_Model {
 
 	    return $image_data['file_name'];
 	}
-
-	public function updateproduct($id, $data){
-		$sql_query=$this->db->where('product_id', $id)
-					->update('product', $data); 
-		return $sql_query;
-	}
-
 }
+?>

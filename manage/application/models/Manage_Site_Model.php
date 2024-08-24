@@ -26,13 +26,38 @@ Class Manage_Site_Model extends CI_Model {
 		return $query->row();      
 	}
 
+	public function getsite_banner(){
+		$query = $this->db->get('banner');
+		return $query->result();  
+	}
 	
+	public function add_banner($data){
+		$this->db->insert('banner',$data);
+		$category = $this->db->insert_id();
+		return ($this->db->affected_rows() != 1) ? false : true; 
+	}
+
 	public function editpage($id, $data){
 		$sql_query = $this->db->where('id', $id)
 					->update('site_options', $data); 
 		return $sql_query;
 	}
 
+	public function deletecbanner($status,$id){
+		if($status == 1) {
+			$data = array(
+			   'is_active' => 0
+			);
+		}
+		else {
+			$data = array(
+			   'is_active' => 1
+			);
+		}
+		$sql_query=$this->db->where('id', $id)
+					->update('banner', $data); 
+
+	}
 
 	public function getsitesettings(){
 		$settings = [];

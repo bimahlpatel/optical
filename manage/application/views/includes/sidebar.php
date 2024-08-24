@@ -42,11 +42,7 @@
                       <ul class="sidebar-submenu">
                         <li><a href="<?php echo base_url()?>Category">Category Detail</a></li>
                         <li><a href="<?php echo base_url()?>product">Product</a></li>
-                        <li><a href="<?php echo base_url()?>product/addproduct">Add Products</a></li>
-                        <li><a href="product-page.html">Product page</a></li>
-                        <li><a href="list-products.html">Product list</a></li>
-                        <li><a href="payment-details.html">Payment Details</a></li>
-                        <li><a href="order-history.html">Order History</a></li>                    
+                        <li><a href="<?php echo base_url()?>product/addproduct">Add Products</a></li>                
                       </ul>
                   </li>
                   <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title" href="#">
@@ -62,7 +58,15 @@
                       <li><a href="user-cards.html">Users Cards</a></li>
                     </ul>
                   </li>
-                  
+                  <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                      <a class="sidebar-link sidebar-title link-nav" href="<?php echo base_url()?>site/banner">
+                      <svg class="stroke-icon">
+                        <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#stroke-faq"></use>
+                      </svg>
+                      <svg class="fill-icon">
+                        <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#fill-faq"></use>
+                      </svg><span>Home Banner</span></a>
+                  </li>
 
                       <li class="sidebar-main-title">
                     <div>

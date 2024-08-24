@@ -2,7 +2,9 @@
  <?php
             include_once(APPPATH.'views/includes/header.php');
         ?>
-
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/vendors/dropzone.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/vendors/filepond.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/vendors/filepond-plugin-image-preview.css">
  <!-- Page Header Ends -->
  <!-- Page Body Start-->
  <div class="page-body-wrapper">
@@ -66,10 +68,15 @@
                             <td><img src="<?php echo COMPANY_SITE.'assets/uploads/product/'.$row->product_image;?>" width="50" height="50"></td>
                             <td><?php if($row->isActive == 1) { echo "Active";} else { echo "Inactive";}?></td>
                             <td> 
-                              <ul class="action"> 
-                                <li class="edit"> <a href="<?php echo base_url()?>product/editproduct/<?php echo $row->product_id;?>"><i class="icon-pencil-alt"></i></a></li>
-                                <li class="delete"><a href="<?php echo base_url()?>product/deleteproduct/<?php echo $row->product_id;?>"><i class="icon-trash"></i></a></li>
-                                <li class="delete"><a href="<?php echo base_url()?>product/deleteproduct/<?php echo $row->product_id;?>"><i class="icon-info"></i></a></li>
+                              <ul class="action">
+                                <li class="edit">
+                                <a href="javascript:void(0)" data-bs-toggle="modal" class="openModalLink" data-value="<?php echo $row->product_id;?>"><i class="icon-image fs-3"></i></a>
+
+                              </li> 
+                                <li class="edit"> <a href="<?php echo base_url()?>product/editproduct/<?php echo $row->product_id;?>"><i class="icon-pencil-alt fs-3"></i></a></li>
+                                <li class="delete"><a href="<?php echo base_url()?>product/deleteproduct/<?php echo $row->product_id;?>"><i class="icon-trash fs-3"></i></a>
+                                    
+                              </li>
                               </ul>
                             </td>
                           </tr>
@@ -84,6 +91,46 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-sm-12">
+         <div class="card">
+             <div class="card-header card-no-border text-end">
+                 <div class="card-header-right-icon">
+                     <div class="modal fade" id="dashboard8" role="dialog" tabindex="-1" aria-labelledby="dashboard8"
+                         aria-hidden="true">
+                         <div class="modal-dialog modal-dialog-centered modal-lg">
+                             <div class="modal-content category-popup">
+                                 <div class="modal-body p-0 custom-input">
+
+                                    <!-- Container-fluid starts-->
+                                    <div class="container-fluid">
+                                      <div class="row">
+                                        <div class="col-lg-12">
+                                          <div class="card">
+                                            <div class="card-header text-start">
+                                              <h4>Product Gallary</h4>
+                                            </div>
+                                            <div class="card-body">
+                                              <form class="dropzone dropzone-secondary" id="multiFileUpload" action="<?php echo base_url('product/uploadgallary') ?>" method="post" enctype="multipart/form-data">
+                                                <input type="hidden" id="imageid">
+                                                <div class="dz-message needsclick">
+                                                  <i class="icon-cloud-up"></i>
+                                                  <h6>Drop files here or click to upload.</h6><span class="note needsclick">(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</span>
+                                                </div>
+                                              </form>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <!-- Container-fluid Ends-->
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+
 
         <footer class="footer">
           <div class="container-fluid">
@@ -115,11 +162,48 @@
     <script src="<?php echo base_url('assets/js/slick/slick.min.js')?>"></script>
     <script src="<?php echo base_url('assets/js/slick/slick.js')?>"></script>
     <script src="<?php echo base_url('assets/js/header-slick.js')?>"></script>
+    <script src="<?php echo base_url('assets/js/dropzone/dropzone.js')?>"></script>
+    <script src="<?php echo base_url('assets/js/dropzone/dropzone-script.js')?>"></script>
+    <script src="<?php echo base_url('assets/js/filepond/filepond-plugin-image-preview.js')?>"></script>
+    <script src="<?php echo base_url('assets/js/filepond/filepond-plugin-file-rename.js')?>"></script>
+    <script src="<?php echo base_url('assets/js/filepond/filepond-plugin-image-transform.js')?>"></script>
+    <script src="<?php echo base_url('assets/js/filepond/filepond.js')?>"></script>
+    <script src="<?php echo base_url('assets/js/filepond/custom-filepond.js')?>"></script>
+    <script src="<?php echo base_url('assets/js/tooltip-init.js')?>"></script>
+
     <script src="<?php echo base_url('assets/js/datatable/datatables/jquery.dataTables.min.js')?>"></script>
     <script src="<?php echo base_url('assets/js/datatable/datatables/datatable.custom.js')?>"></script>
     <!-- Plugins JS Ends-->
     <!-- Theme js-->
     <script src="<?php echo base_url('assets/js/script.js')?>"></script>
-    
+    <script>
+  Dropzone.options.multiFileUpload = {
+    paramName: "file", // The name that will be used to transfer the file
+    maxFilesize: 2, // MB
+    acceptedFiles: ".jpeg,.jpg,.png,.gif",
+    uploadMultiple: true,
+    parallelUploads: 10,
+    maxFiles: 10,
+    success: function(file, response) {
+      console.log('File uploaded successfully.');
+    },
+    error: function(file, response) {
+      console.log('File upload failed.');
+    }
+  };
+
+  var openModalLinks = document.querySelectorAll(".openModalLink");
+  var modal = document.getElementById("dashboard8");
+// Loop through all links and add click event listeners
+openModalLinks.forEach(function(link) {
+    link.addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        var dynamicValue = this.getAttribute("data-value"); // Get the dynamic value from data attribute
+        $('#imageid').val(dynamicValue);
+        modal.style.display = "block"; // Show the modal
+        $('#dashboard8').addclass('show'); // Show the modal
+    });
+});
+</script>
   </body>
 </html>
