@@ -360,4 +360,28 @@ function getStateOption($selected_state = '') {
     return $option;
 }
 
+function getsubcategory($categoryid = 0)
+{
+    
+	$option = "";
+	$ci =& get_instance();
+	$ci->load->database();
+	$ci->db->select('category_name, category_id');
+	$ci->db->where('parent_category', $categoryid);
+	$ci->db->where('isDelete', 0);
+	$categorydetail = $ci->db->get('category')->result();
+    
+	$option .= "<option value=''>Select Option</option>";
+
+	foreach ($categorydetail as $row) {
+		$option .= "<option ";
+		$option .= " value=\"" . $row->category_id . "\"";
+		$option .= " >";
+		$option .= $row->category_name;
+		$option .= "</option>";
+	}
+   
+	return $option;
+}
+
 ?>

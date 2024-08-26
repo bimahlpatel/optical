@@ -72,13 +72,26 @@
                                          <div class="col-md-6">
                                              <label class="form-label">Product Category<span
                                                      class="txt-danger">*</span></label>
-                                             <select class="form-select" name="productcategory"
+                                             <select class="form-select" id="productcategory" name="productcategory"
                                                  aria-label="Select product category" required="">
                                                  <option value="">Select</option>
                                                  <?php foreach($categorylist as $cat){?>
-                                                 <option value="<?php echo $cat->category_id?>" <?php if( $productlist->product_cat_id == $cat->category_id) { echo "selected"; }?>>
-                                                     <?php echo $cat->category_name?></option>
+                                                 <option value="<?php echo $cat->id?>" <?php if( $productlist->product_cat_id == $cat->id) { echo "selected"; }?>>
+                                                     <?php echo $cat->name?></option>
                                                  <?php } ?>
+                                             </select>
+                                             <div class="invalid-feedback">
+                                                 Please choose a product category.</div>
+                                             <div class="valid-feedback">Looks good!</div>
+                                         </div>
+                                         <div class="col-md-6">
+                                             <label class="form-label">Product SubCategory<span
+                                                     class="txt-danger">*</span></label>
+                                             <select class="form-select" id="productsubcategory" name="productsubcategory" aria-label="Select product Subcategory" required="">
+                                                 <option value="">Select</option>
+                                                 <?php foreach($subcategory as $subcat){?>
+                                                    <option value="<?php echo $subcat->category_id;?>" <?php  if($subcat->category_id == $productlist->product_subcategory) { echo "selected";}?>><?php echo $subcat->category_name;?></option>
+                                                <?php } ?>
                                              </select>
                                              <div class="invalid-feedback">
                                                  Please choose a product category.</div>
@@ -97,7 +110,7 @@
                                              <input class="form-control" id="productimg" type="file"
                                                  aria-label="file example" name="product_image" required="">
                                              <div class="invalid-feedback">Invalid form file selected</div>
-                                             
+                                             <img src="<?php echo COMPANY_SITE.'assets/uploads/product/'.$productlist->product_image;?>" width="50" height="50">
                                          </div>
                                          <div class="col-md-12">
                                              <label class="form-label">Product Description<span
@@ -131,33 +144,7 @@
      </div>
      <!-- Container-fluid Ends-->
  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- <footer class="footer">
+<footer class="footer">
      <div class="container-fluid">
          <div class="row">
              <div class="col-md-12 footer-copyright text-center">
@@ -207,6 +194,26 @@
  <script src="<?php echo base_url('assets/js/script.js')?>"></script>
 
 
+ <script type="text/javascript">
+$('#productcategory').on('change', function(){
+      var catid = $(this).val();
+
+      $.ajax({
+          url : "<?php echo site_url('category/getsubcategory/'); ?>" + catid,
+          type:'POST',
+          dataType: 'json',
+          cache: false,
+          processData: false,
+          success: function(response) {
+            console.log(response);
+              $("#productsubcategory").find('option').remove();
+              if(response['success'] == true) {
+                  $("#productsubcategory").append(response['categorylist']);
+              } 
+           }
+      });
+  });
+</script>
  </body>
 
  </html>

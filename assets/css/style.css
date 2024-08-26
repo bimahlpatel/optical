@@ -68,7 +68,7 @@ label {
 /*-- header --*/
 
 header {
-    padding: 2em 2em 0 2em;
+    padding: 1em 2em 0 2em;
 }
 
 .top-bar_sub .btn-primary {
@@ -189,6 +189,7 @@ h1.logo a.navbar-brand {
     margin: 0 auto;
     left: 9%;
     border-radius: 0;
+    top:85px;
 }
 
 .nav-mega .dropdown-menu.mega-menu>li {

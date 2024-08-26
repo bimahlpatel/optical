@@ -40,7 +40,8 @@
                         <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#fill-ecommerce"></use>
                       </svg><span>Ecommerce</span></a>
                       <ul class="sidebar-submenu">
-                        <li><a href="<?php echo base_url()?>Category">Category Detail</a></li>
+                        <li><a href="<?php echo base_url()?>Category_Master">Category</a></li>
+                        <li><a href="<?php echo base_url()?>category">SubCategory</a></li>
                         <li><a href="<?php echo base_url()?>product">Product</a></li>
                         <li><a href="<?php echo base_url()?>product/addproduct">Add Products</a></li>                
                       </ul>

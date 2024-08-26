@@ -5,6 +5,7 @@ Class Category extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('Manage_Category_Model');
+		$this->load->model('Manage_CategoryMaster_Model');
 		if(! $this->session->userdata('adminid')) {
 			redirect('login');
 		}
@@ -12,7 +13,8 @@ Class Category extends CI_Controller {
 
 	public function index(){
 		$categorylist = $this->Manage_Category_Model->getcategorylist();
-		$this->load->view('category_detail',['categorylist'=>$categorylist]);
+		$category_master = $this->Manage_CategoryMaster_Model->getactivecategorylist();
+		$this->load->view('category_detail',['categorylist'=>$categorylist, 'category_master'=>$category_master]);
 	}
 
 	public function addCategory(){
@@ -32,7 +34,8 @@ Class Category extends CI_Controller {
 
 	public function editForm($id){
 		$categorydetails = $this->Manage_Category_Model->getcategorydetails($id);
-		$this->load->view('category_edit',['categorydetails'=>$categorydetails]);
+		$category_master = $this->Manage_CategoryMaster_Model->getactivecategorylist();
+		$this->load->view('category_edit',['categorydetails'=>$categorydetails, 'category_master'=>$category_master]);
 	}
 
 	public function editcategory(){
@@ -48,6 +51,17 @@ Class Category extends CI_Controller {
 		$response = $this->Manage_Category_Model->editcategory($_REQUEST['categoryid'], $data);
 
 		redirect('Category');
+	}
+
+	public function getsubcategory($catid){
+		$categorylist = array();;
+		if($catid != 0) {
+			$subcatlist = getsubcategory($catid);
+			echo json_encode(array("success"=>true, "categorylist"=>$subcatlist));
+		}
+		else {
+			echo json_encode(array("success"=>false, "categorylist"=>$subcatlist));
+		}
 	}
 
 

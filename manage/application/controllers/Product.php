@@ -5,6 +5,7 @@ Class Product extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('Manage_Product_Model');
+		$this->load->model('Manage_CategoryMaster_Model');
 		$this->load->model('Manage_Category_Model');
 		if(! $this->session->userdata('adminid')) {
 			redirect('login');
@@ -17,7 +18,7 @@ Class Product extends CI_Controller {
 	}
 
 	public function addproduct(){
-		$categorylist = $this->Manage_Category_Model->getcategorylist();
+		$categorylist = $this->Manage_CategoryMaster_Model->getmascategorylist();
 		$this->load->view('add_product',['categorylist'=>$categorylist]);
 	}
 
@@ -34,6 +35,7 @@ Class Product extends CI_Controller {
 			'product_slug' => $_REQUEST['productslug'],
 			'product_sku' => $_REQUEST['productsku'],
 			'product_cat_id' => $_REQUEST['productcategory'],
+			'product_subcategory' => $_REQUEST['productsubcategory'],
 			'product_description' =>$_REQUEST['product_desc'],
 			'product_image'=>$product_image,
 			'created_date' => date('Y-m-d H:i:s'),
@@ -47,8 +49,9 @@ Class Product extends CI_Controller {
 
 	public function editproduct($id){
 		$productlist = $this->Manage_Product_Model->getproductdetails($id);
-		$categorylist = $this->Manage_Category_Model->getcategorylist();
-		$this->load->view('edit_product',['productlist'=>$productlist, 'categorylist'=>$categorylist]);
+		$categorylist = $this->Manage_CategoryMaster_Model->getmascategorylist();
+		$subcategorylist = $this->Manage_Category_Model->getcategorylist();
+		$this->load->view('edit_product',['productlist'=>$productlist, 'categorylist'=>$categorylist, 'subcategory'=>$subcategorylist]);
 	}
 
 	public function updateproduct(){
@@ -64,6 +67,7 @@ Class Product extends CI_Controller {
 			'product_slug' => $_REQUEST['productslug'],
 			'product_sku' => $_REQUEST['productsku'],
 			'product_cat_id' => $_REQUEST['productcategory'],
+			'product_subcategory' => $_REQUEST['productsubcategory'],
 			'product_description' =>$_REQUEST['product_desc'],
 			'product_image'=>$product_image,
 			'updated_date' => date('Y-m-d H:i:s'),

@@ -64,7 +64,9 @@
                                                              class="txt-danger">*</span></label>
                                                      <select class="form-select" name="parentcategory" aria-label="Select parent category" required="">
                                                         <option  value="">Select</option>
-                                                        <option  value="goggals" <?php if( $categorydetails->parent_category == 'goggals') { echo 'selected';} ?>>Goggals</option>
+                                                         <?php foreach($category_master as $cat){?>
+                                                            <option  value="<?php echo $cat->id;?>" <?php if($cat->id == $categorydetails->parent_category){ echo "selected";} ?>><?php echo $cat->name;?></option>
+                                                        <?php } ?>
                                                      </select>
                                                      <div class="invalid-feedback">
                                                          Please choose a parent category.</div>
@@ -75,7 +77,9 @@
                                                              class="txt-danger">*</span></label>
                                                      <select class="form-select" name="categorytype" aria-label="Select category type" required="">
                                                         <option value="">Select</option>
-                                                         <option  value="goggals" <?php if( $categorydetails->parent_category == 'goggals') { echo 'selected';} ?>>Goggals</option>
+                                                         <option  value="men" <?php if( $categorydetails->category_type == 'men') {echo 'selected';};?>>Men</option>
+                                                         <option  value="women" <?php if( $categorydetails->category_type == 'women') {echo 'selected';};?>>Women</option>
+                                                         <option  value="kids" <?php if( $categorydetails->category_type == 'kids') {echo 'selected';};?>>kids</option>
                                                      </select>
                                                      <div class="invalid-feedback">
                                                          Please choose a category type.</div>

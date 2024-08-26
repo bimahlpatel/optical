@@ -3,10 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 Class Manage_Category_Model extends CI_Model {
 
 	public function getcategorylist(){
-		$query = $this->db->where('category_status', 0)
-				->order_by('category_id  asc')
-				->get('category');
-		return $query->result();      
+
+		$query = $this->db->select('c.*, cm.name')
+				->from('category c')
+				->join('category_master cm','cm.id=c.parent_category')
+				->get();
+		return $query->result();
 	}
 
 	public function getcategorydetails($id){
