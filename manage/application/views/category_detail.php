@@ -2,7 +2,7 @@
  <?php
             include_once(APPPATH.'views/includes/header.php');
         ?>
-         <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/vendors/js-datatables/style.css">
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/vendors/js-datatables/style.css">
  <!-- Page Header Ends -->
  <!-- Page Body Start-->
  <div class="page-body-wrapper">
@@ -23,7 +23,8 @@
                          <ol class="breadcrumb">
                              <li class="breadcrumb-item"><a href="index.html">
                                      <svg class="stroke-icon">
-                                         <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#stroke-home"></use>
+                                         <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#stroke-home">
+                                         </use>
                                      </svg></a></li>
                              <li class="breadcrumb-item">ECommerce</li>
                              <li class="breadcrumb-item active">Category</li>
@@ -43,9 +44,12 @@
                                      <div class="light-box"><a data-bs-toggle="collapse" href="#collapseProduct"
                                              role="button" aria-expanded="false" aria-controls="collapseProduct"><i
                                                  class="filter-icon show" data-feather="filter"></i><i
-                                                 class="icon-close filter-close hide"></i></a></div><a class="btn btn-primary f-w-500" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#dashboard8"><i class="fa fa-plus pe-2"></i>Add Category</a>
+                                                 class="icon-close filter-close hide"></i></a></div><a
+                                         class="btn btn-primary f-w-500" href="javascript:void(0)"
+                                         data-bs-toggle="modal" data-bs-target="#dashboard8"><i
+                                             class="fa fa-plus pe-2"></i>Add Category</a>
                                  </div>
-                                 
+
                              </div>
                              <div class="list-product list-category">
                                  <table class="table" id="project-status">
@@ -64,10 +68,10 @@
                                          </tr>
                                      </thead>
                                      <tbody>
-                                        <?php if(count($categorylist)){
+                                         <?php if(count($categorylist)){
                                             foreach($categorylist as $row){?>
 
-                                            <tr class="product-removes">
+                                         <tr class="product-removes">
                                              <td>
                                                  <div class="form-check">
                                                      <input class="form-check-input checkbox-primary" type="checkbox">
@@ -83,25 +87,30 @@
                                                      <p><?php echo $row->name;?></p>
                                                  </div>
                                              </td>
-                                             <td> <span class="badge badge-light-primary"><?php echo $row->category_type;?></span></td>
-                                             
+                                             <td> <span
+                                                     class="badge badge-light-primary"><?php echo $row->category_type;?></span>
+                                             </td>
+
                                              <td>
                                                  <div class="product-names">
-                                                     <p><?php if($row->category_status == 0) { echo 'Active'; } else { echo 'Inactive'; };?></p>
+                                                     <p><?php if($row->category_status == 0) { echo 'Active'; } else { echo 'Inactive'; };?>
+                                                     </p>
                                                  </div>
                                              </td>
-                                            <td>
-                                             <ul class="action"> 
-                                                    <li class="edit"> <a href="<?php echo base_url()?>category/editForm/<?php echo $row->category_id;?>"><i class="icon-pencil-alt"></i></a></li>
-                                                    <li class="delete"><a href="#"><i class="icon-trash"></i></a></li>
-                                                </ul>
+                                             <td>
+                                                 <ul class="action">
+                                                     <li class="edit"> <a
+                                                             href="<?php echo base_url()?>category/editForm/<?php echo $row->category_id;?>"><i
+                                                                 class="icon-pencil-alt"></i></a></li>
+                                                     <li class="delete"><a href="#"><i class="icon-trash"></i></a></li>
+                                                 </ul>
                                              </td>
                                          </tr>
 
-                                           <?php }
+                                         <?php }
                                         }?>
-                                         
-                                         
+
+
                                      </tbody>
                                  </table>
                              </div>
@@ -128,12 +137,13 @@
                                  <div class="modal-body p-0 custom-input">
                                      <div class="text-start">
                                          <div class="p-20">
-                                             <form class="row g-3 needs-validation" novalidate="" action="<?php echo base_url()?>category/addCategory" method="post">
+                                             <form class="row g-3 needs-validation" novalidate=""
+                                                 action="<?php echo base_url()?>category/addCategory" method="post">
                                                  <div class="col-md-6">
                                                      <label class="form-label" for="CategoryName">Category
                                                          Name<span class="txt-danger">*</span></label>
-                                                     <input class="form-control" name="categoryname" id="CategoryName" type="text"
-                                                         placeholder="Enter your category name" required="">
+                                                     <input class="form-control" name="categoryname" id="CategoryName"
+                                                         type="text" placeholder="Enter your category name" required="">
                                                      <div class="invalid-feedback">
                                                          Please enter a category name.</div>
                                                      <div class="valid-feedback">Looks good!</div>
@@ -150,11 +160,13 @@
                                                  <div class="col-md-12">
                                                      <label class="form-label">Parent Category<span
                                                              class="txt-danger">*</span></label>
-                                                     <select class="form-select" name="parentcategory" aria-label="Select parent category" required="">
-                                                        <option  value="">Select</option>
-                                                        <?php foreach($category_master as $cat){?>
-                                                            <option  value="<?php echo $cat->id;?>"><?php echo $cat->name;?></option>
-                                                        <?php } ?>
+                                                     <select class="form-select" name="parentcategory"
+                                                         aria-label="Select parent category" required="">
+                                                         <option value="">Select</option>
+                                                         <?php foreach($category_master as $cat){?>
+                                                         <option value="<?php echo $cat->id;?>"><?php echo $cat->name;?>
+                                                         </option>
+                                                         <?php } ?>
                                                      </select>
                                                      <div class="invalid-feedback">
                                                          Please choose a parent category.</div>
@@ -163,11 +175,12 @@
                                                  <div class="col-md-6">
                                                      <label class="form-label">Category For<span
                                                              class="txt-danger">*</span></label>
-                                                     <select class="form-select" name="categorytype" aria-label="Select category type" required="">
-                                                        <option value="">Select</option>
-                                                         <option  value="men">Men</option>
-                                                         <option  value="women">Women</option>
-                                                         <option  value="kids">kids</option>
+                                                     <select class="form-select" name="categorytype"
+                                                         aria-label="Select category type" required="">
+                                                         <option value="">Select</option>
+                                                         <option value="men">Men</option>
+                                                         <option value="women">Women</option>
+                                                         <option value="kids">kids</option>
                                                      </select>
                                                      <div class="invalid-feedback">
                                                          Please choose a category type.</div>
@@ -176,7 +189,8 @@
                                                  <div class="col-md-6">
                                                      <label class="form-label">Category Status<span
                                                              class="txt-danger">*</span></label>
-                                                     <select class="form-select" name="categorystatus" aria-label="Select category status" required="">
+                                                     <select class="form-select" name="categorystatus"
+                                                         aria-label="Select category status" required="">
                                                          <option selected="">Active</option>
                                                          <option value="1">Inactive</option>
                                                      </select>
@@ -184,8 +198,8 @@
                                                          Please choose a category status.</div>
                                                      <div class="valid-feedback">Looks good!</div>
                                                  </div>
-                                                 
-                                                 
+
+
                                                  <div class="col-md-12 d-flex justify-content-end">
                                                      <button class="btn btn-primary" type="submit">Create +</button>
                                                  </div>
@@ -198,25 +212,27 @@
                      </div>
                  </div>
              </div>
-            <?php
+             <?php
         include_once(APPPATH.'views/includes/footer.php');
     ?>
-    <script src="<?php echo base_url('assets/js/datatable/datatables/jquery.dataTables.min.js')?>"></script>
-    <script src="<?php echo base_url('assets/js/datatable/datatables/dataTables.js')?>"></script>
-    <script src="<?php echo base_url('assets/js/datatable/datatables/dataTables.select.js')?>"></script>
-    <script src="<?php echo base_url('assets/js/datatable/datatables/select.bootstrap5.js')?>"></script>
-    <script src="<?php echo base_url('assets/js/datatable/datatables/datatable.custom.js')?>"></script>
-    <script src="<?php echo base_url('assets/js/sweet-alert/sweetalert.min.js')?>"></script>
-    <script src="<?php echo base_url('assets/js/trash_popup.js')?>"></script>
-    <script src="<?php echo base_url('assets/js/js-datatables/simple-datatables@latest.js')?>"></script>
-    <script src="<?php echo base_url('assets/js/custom-list-product.js')?>"></script>
-    <script src="<?php echo base_url('assets/js/ecommerce.js')?>"></script>
-        <script src="<?php echo base_url('assets/js/editors/quill.js')?>"></script>
-        
-    <script>
-         var editor10 = new Quill("#editor10", {
-      modules: { toolbar: "#toolbar10" },
-      theme: "snow",
-      placeholder: "Enter your messages...",
-    });
-    </script>
+             <script src="<?php echo base_url('assets/js/datatable/datatables/jquery.dataTables.min.js')?>"></script>
+             <script src="<?php echo base_url('assets/js/datatable/datatables/dataTables.js')?>"></script>
+             <script src="<?php echo base_url('assets/js/datatable/datatables/dataTables.select.js')?>"></script>
+             <script src="<?php echo base_url('assets/js/datatable/datatables/select.bootstrap5.js')?>"></script>
+             <script src="<?php echo base_url('assets/js/datatable/datatables/datatable.custom.js')?>"></script>
+             <script src="<?php echo base_url('assets/js/sweet-alert/sweetalert.min.js')?>"></script>
+             <script src="<?php echo base_url('assets/js/trash_popup.js')?>"></script>
+             <script src="<?php echo base_url('assets/js/js-datatables/simple-datatables@latest.js')?>"></script>
+             <script src="<?php echo base_url('assets/js/custom-list-product.js')?>"></script>
+             <script src="<?php echo base_url('assets/js/ecommerce.js')?>"></script>
+             <script src="<?php echo base_url('assets/js/editors/quill.js')?>"></script>
+
+             <script>
+             var editor10 = new Quill("#editor10", {
+                 modules: {
+                     toolbar: "#toolbar10"
+                 },
+                 theme: "snow",
+                 placeholder: "Enter your messages...",
+             });
+             </script>

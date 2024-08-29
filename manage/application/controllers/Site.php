@@ -81,6 +81,29 @@ Class Site extends CI_Controller {
 		redirect('site/editPage/'.$_REQUEST['page']);
 	}
 
+	public function banner_edit(){
+        $id = $this->input->post('id');
+		$data['bannerdetails']= $this->Manage_Site_Model->editbanner($id);
+		echo json_encode($data);
+	}
+
+	public function update_banner(){
+		$product_image = "placeholder.jpg";
+
+		if($_FILES['e_banner_image']['name'] != '') {
+			$banner_image = $this->Manage_Product_Model->single_file_upload('e_banner_image', 'banner', 'jpg|gif|png|jpeg', 0, $_FILES['e_banner_image']['name']);
+		}
+
+		$data = array(
+			'title' => $_REQUEST['e_bannername'],
+			'sub_title' => $_REQUEST['e_bannersubtitle'],
+			'image' => $banner_image,
+		);
+		
+		$response = $this->Manage_Site_Model->updatebanner($this->input->post('edit_id'),$data);
+
+		redirect('site/banner');
+	}
 	
 	public function uploadbulkfile(){
 		$this->load->library('csvimport');

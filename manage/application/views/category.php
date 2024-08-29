@@ -146,7 +146,7 @@
                  </div>
              </div>
              <div class="col-sm-12">
-         <div class="card">
+            <div class="card">
              <div class="card-header card-no-border text-end">
                  <div class="card-header-right-icon">
                      <div class="modal fade" id="editdashboard8" tabindex="-1" aria-labelledby="editdashboard8"

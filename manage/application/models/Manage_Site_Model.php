@@ -59,6 +59,19 @@ Class Manage_Site_Model extends CI_Model {
 
 	}
 
+	
+	public function editbanner($id){
+		$query = $this->db->where('id', $id)
+				->get('banner');
+		return $query->row();    
+	}
+
+	public function updatebanner($id, $data){
+		$sql_query = $this->db->where('id', $id)
+					->update('banner', $data); 
+		return $sql_query;   
+	}
+
 	public function getsitesettings(){
 		$settings = [];
 

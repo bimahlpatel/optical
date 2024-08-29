@@ -9,6 +9,15 @@ Class Infopage extends CI_Controller {
 
 	public function index(){
 		$categorylist = $this->Site_Info_Model->getcategorylist();
-		$this->load->view('index',['categorylist'=>$categorylist]);
+		$bannerlist = $this->Site_Info_Model->getbannerlist();
+		$newproductlist = $this->Site_Info_Model->getproductlist();
+
+		$this->load->view('index',['categorylist'=>$categorylist, 'bannerlist'=>$bannerlist, 'productlist'=>$newproductlist]);
 	}
+
+	public function get_singleproduct($pid){
+		$productdetail = $this->Site_Info_Model->getproductdetailByid($pid);
+		$this->load->view('single_product_detail',['productdetail'=>$productdetail]);
+	}
+
 }

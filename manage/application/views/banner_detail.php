@@ -89,7 +89,7 @@
                                              </td>
                                              <td>
                                              <ul class="action"> 
-                                                    <li class="edit"> <a href="<?php echo base_url()?>site/editbanner/<?php echo $row->id;?>"><i class="icon-pencil-alt"></i></a></li>
+                                                    <li class="edit"> <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#editdashboard8" onclick=edit_banner(<?php echo $row->id;?>)><i class="icon-pencil-alt"></i></a></li>
                                                     <li class="delete"><a href="<?php echo base_url()?>site/deletebanner/<?php echo $row->is_active;?>/<?php echo $row->id;?>"><i class="icon-trash"></i></a></li>
                                                 </ul>
                                              </td>
@@ -177,6 +177,65 @@
                      </div>
                  </div>
              </div>
+             <div class="col-sm-12">
+            <div class="card">
+             <div class="card-header card-no-border text-end">
+                 <div class="card-header-right-icon">
+                     <div class="modal fade" id="editdashboard8" tabindex="-1" aria-labelledby="editdashboard8"
+                         aria-hidden="true">
+                         <div class="modal-dialog modal-dialog-centered modal-lg">
+                             <div class="modal-content category-popup">
+                                 <div class="modal-header">
+                                     <h5 class="modal-title" id="modaldashboard">Update Banner</h5>
+                                     <button class="btn-close" type="button" data-bs-dismiss="modal"
+                                         aria-label="Close"></button>
+                                 </div>
+                                 <div class="modal-body p-0 custom-input">
+                                     <div class="text-start">
+                                         <div class="p-20">
+                                             <form class="row g-3 needs-validation" novalidate="" action="<?php echo base_url()?>site/update_banner" method="post" enctype="multipart/form-data">
+                                                 <div class="col-md-6">
+                                                    <input type="hidden" name="edit_id" id="edit_id">
+                                                    <div class="col-md-6">
+                                                     <label class="form-label" for="e_bannerName">Banner
+                                                         Name<span class="txt-danger">*</span></label>
+                                                     <input class="form-control" name="e_bannername" id="e_bannerName" type="text"
+                                                         placeholder="Enter your banner name" required="">
+                                                     <div class="invalid-feedback">
+                                                         Please enter a banner name.</div>
+                                                     <div class="valid-feedback">Looks good!</div>
+                                                     </div>
+                                                 </div>
+
+                                                 <div class="col-md-6">
+                                                     <label class="form-label" for="e_bannersubtitle">Banner
+                                                         Subtitle<span class="txt-danger">*</span></label>
+                                                     <input class="form-control" name="e_bannersubtitle" id="e_bannersubtitle" type="text"
+                                                         placeholder="Enter your banner subtitle" required="">
+                                                     <div class="invalid-feedback">
+                                                         Please enter a banner subtitle.</div>
+                                                     <div class="valid-feedback">Looks good!</div>
+                                                 </div>
+
+                                                 <div class="col-md-6"> 
+                                                    <label class="form-label" for="e_bannerimg">Product Image</label>
+                                                    <input class="form-control" id="e_bannerimg" type="file" aria-label="file example" name="e_banner_image" required="">
+                                                    <div class="invalid-feedback">Invalid form file selected</div>
+                                                    <img id="e_image" name="e_image" width="50" height="50">
+                                                </div>
+                                                 
+                                                 <div class="col-md-12 d-flex justify-content-end">
+                                                     <button class="btn btn-primary" type="submit">Update +</button>
+                                                 </div>
+                                             </form>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
             <?php
         include_once(APPPATH.'views/includes/footer.php');
     ?>
@@ -195,4 +254,21 @@
       theme: "snow",
       placeholder: "Enter your messages...",
     });
+
+    function edit_banner(id)
+    {
+        $('input[name=edit_id]').val(id);
+        $.ajax({
+            url: '<?php echo base_url() . 'site/banner_edit'; ?>',
+            method: 'post',
+            dataType: 'json',
+            data: {'id': id},
+            success: function (data) {
+                $('input[name=e_bannername]').val(data.bannerdetails['title']);
+                $('input[name=e_bannersubtitle]').val(data.bannerdetails['sub_title']);
+                $('#editdashboard8 img').attr("src","<?php echo COMPANY_SITE;?>assets/uploads/banner/"+data.bannerdetails['image']);
+                
+            }
+        });
+    }
     </script>
