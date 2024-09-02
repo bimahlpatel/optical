@@ -104,85 +104,46 @@ Class Site extends CI_Controller {
 
 		redirect('site/banner');
 	}
+
+	public function store_locator(){
+		$storedetails = $this->Manage_Site_Model->getstore_locator();
+		$this->load->view('store_detail',['storedetails'=>$storedetails]);
+	}
+
+	public function addstore(){
+		
+		$data = array(
+			'store_name' => $_REQUEST['storename'],
+			'store_email' => $_REQUEST['storeemail'],
+			'store_contactno' => $_REQUEST['storecontact'],
+			'store_address' => $_REQUEST['store_address'],
+			'store_location' => $_REQUEST['store_location'],
+			
+		);
+		$response = $this->Manage_Site_Model->add_store($data);
+
+		redirect('site/store_locator');
+	}
+
+	public function get_store_ByID(){
+        $id = $this->input->post('id');
+		$data['storedetails']= $this->Manage_Site_Model->edit_store($id);
+		echo json_encode($data);
+	}
+
+	public function updatestore(){
+		
+		$data = array(
+			'store_name' => $_REQUEST['e_storename'],
+			'store_email' => $_REQUEST['e_storeemail'],
+			'store_contactno' => $_REQUEST['e_storecontact'],
+			'store_address' => $_REQUEST['e_store_address'],
+			'store_location' => $_REQUEST['e_store_location'],
+			
+		);
+		$response = $this->Manage_Site_Model->updatestore($_REQUEST['storeid'], $data);
+
+		redirect('site/store_locator');
+	}
 	
-	public function uploadbulkfile(){
-		$this->load->library('csvimport');
-		$this->load->model('Manage_Site_Model');
-
-		$file_data = $this->csvimport->get_array($_FILES["smsfile"]["tmp_name"]);
-		$cnt = 0;
-
-		foreach($file_data as $row) {
-			if($row["mobile"] != '') {
-				$chkentry = $this->Manage_Site_Model->checkdataentry($row["mobile"]);
-
-				if($chkentry < 1) {
-					$data = array(
-						'rec_date' => date('Y-m-d H:i:s'),
-						'fullname' => $row["fullname"],
-					    'mobileno' => $row["mobile"],
-					    'emailid' => $row["email"]
-					);
-
-					$response = $this->Manage_Site_Model->uploadbulkfile($data);
-					$cnt = $cnt + 1;
-				}
-			}
-		}
-
-		echo json_encode(array("success"=>true, "message"=>$cnt." - numbers successfully imported."));
-		die;
-	}
-
-	public function stafflist()
-	{
-		$this->load->model('Manage_Site_Model');
-		$datalist = $this->Manage_Site_Model->getstaffmemberlist();
-		$this->load->view('staff-members', ['datalist' => $datalist]);
-	}
-
-	public function staffaddForm()
-	{
-		$this->load->view('staff-members-add');
-	}
-
-	public function addStaffmember()
-	{
-		if ($_REQUEST['newpassword'] == $_REQUEST['retypepassword']) {
-			$enc_password = encryptPassword($_REQUEST['emailid'], $_REQUEST['newpassword']);
-
-			$data = array(
-				'rec_date' => date('Y-m-d H:i:s'),
-				'fullname' => $_REQUEST['fullname'],
-				'mobile' => $_REQUEST['mobile'],
-				'emailid' => $_REQUEST['emailid'],
-				'password' => $enc_password,
-				'role' => $_REQUEST['staffrole'],
-				'isActive' => 1,
-				'isDelete' => 0
-			);
-
-			$this->load->model('Manage_Site_Model');
-			$response = $this->Manage_Site_Model->addstaffmember($data);
-
-			echo json_encode(array("success" => true, "message" => "Staff account successfully created."));
-		} else {
-			echo json_encode(array("success" => false, "message" => "Both passwords are not equal."));
-		}
-	}
-
-	public function deletestaff($id)
-	{
-		$this->load->model('Manage_Site_Model');
-		$this->Manage_Site_Model->deletestaffaccount($id);
-		redirect('site/stafflist');
-	}
-
-	public function test(){
-		$this->load->model('Manage_General_Model');
-		// $content = $this->Manage_General_Model->simpleemailtemplate('sss');
-		$content = $this->Manage_General_Model->welcomeemailtemplate('ll','lplp');
-		echo $content;
-		die;
-	}
 }

@@ -18,6 +18,7 @@ Class Category_Master extends CI_Controller {
 	public function addCategory(){
 		$data = array(
 			'name' => $_REQUEST['categoryname'],
+			'category_slug' => str_replace(" ", "-", strtolower($_REQUEST['categoryname'])),
 			'created_date' => date('Y-m-d H:i:s'),
 		);
 		
@@ -35,6 +36,7 @@ Class Category_Master extends CI_Controller {
 	public function updatecategory(){
 		$data = array(
 			'name' => $_REQUEST['e_categoryname'],
+			'category_slug' => str_replace(" ","-", strtolower($_REQUEST['e_categoryname'])),
 			'updated_date' => date('Y-m-d H:i:s'),
 		);
 		

@@ -52,3 +52,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'Infopage';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['category/(:any)'] = 'Product/getProductByCategory/$1';

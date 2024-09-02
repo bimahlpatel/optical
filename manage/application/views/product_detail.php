@@ -174,6 +174,14 @@
                                                                 <form class="row g-3 needs-validation" novalidate="" action="<?php echo base_url()?>product/addproduct_specifination" method="post">
                                                                     <input type="hidden" name="product_id" id="product_id">
                                                                     <div class="col-md-4">
+                                                                        <label class="form-label text-start" for="model_no">Model No</label>
+                                                                        <input class="form-control" name="model_no" id="model_no"
+                                                                            type="text" placeholder="Enter your Model No">
+                                                                        <div class="invalid-feedback">
+                                                                            Please enter a Model No.</div>
+                                                                        <div class="valid-feedback">Looks good!</div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
                                                                         <label class="form-label text-start" for="frame_type">Frame Type</label>
                                                                         <input class="form-control" name="frame_type" id="frame_type"
                                                                             type="text" placeholder="Enter your Frame Type">

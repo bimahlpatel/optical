@@ -1,9 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-Class Manage_General_Model extends CI_Controller {
-
-
-    
+Class Manage_General_Model extends CI_Model {
     public function single_file_upload($my_file, $file_path, $types="*", $thumb=1, $image_name) {
 		$this->load->library('upload');
 		
@@ -20,14 +17,11 @@ Class Manage_General_Model extends CI_Controller {
 
           // create an album if not already exist in uploads dir
             // wouldn't make more sence if this part is done if there are no errors and right before the upload ??
-            if (!is_dir('product'))
-            {
-                mkdir('../assets/uploads/'.$file_path, 0777, true);
-            }
+           
             $dir_exist = true; // flag for checking the directory exist or not
-            if (!is_dir('../assets/uploads/'.$file_path.'/' . $image_name))
+            if (!is_dir(base_url().'/assets/uploads/'.$file_path.'/' . $image_name))
             {
-                mkdir('../assets/uploads/'.$file_path.'/' . $image_name, 0777, true);
+                mkdir(base_url().'/assets/uploads/'.$file_path.'/' . $image_name, 0777, true);
                 $dir_exist = false; // dir not exist
             }
             else{

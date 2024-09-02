@@ -46,6 +46,24 @@
                         <li><a href="<?php echo base_url()?>product/addproduct">Add Products</a></li>                
                       </ul>
                   </li>
+                  <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                      <a class="sidebar-link sidebar-title link-nav" href="<?php echo base_url()?>brand">
+                      <svg class="stroke-icon">
+                        <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#stroke-faq"></use>
+                      </svg>
+                      <svg class="fill-icon">
+                        <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#fill-faq"></use>
+                      </svg><span>Brand</span></a>
+                  </li>
+                  <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                      <a class="sidebar-link sidebar-title link-nav" href="<?php echo base_url()?>site/banner">
+                      <svg class="stroke-icon">
+                        <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#stroke-faq"></use>
+                      </svg>
+                      <svg class="fill-icon">
+                        <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#fill-faq"></use>
+                      </svg><span>Home Banner</span></a>
+                  </li>
                   <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title" href="#">
                       <svg class="stroke-icon">
                         <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#stroke-user"></use>
@@ -59,15 +77,7 @@
                       <li><a href="user-cards.html">Users Cards</a></li>
                     </ul>
                   </li>
-                  <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                      <a class="sidebar-link sidebar-title link-nav" href="<?php echo base_url()?>site/banner">
-                      <svg class="stroke-icon">
-                        <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#stroke-faq"></use>
-                      </svg>
-                      <svg class="fill-icon">
-                        <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#fill-faq"></use>
-                      </svg><span>Home Banner</span></a>
-                  </li>
+                  
 
                       <li class="sidebar-main-title">
                     <div>
@@ -82,6 +92,15 @@
                       <svg class="fill-icon">
                         <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#fill-faq"></use>
                       </svg><span>Site Setting</span></a></li>
+                    
+                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                      <a class="sidebar-link sidebar-title link-nav" href="<?php echo base_url()?>site/store_locator">
+                      <svg class="stroke-icon">
+                        <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#stroke-faq"></use>
+                      </svg>
+                      <svg class="fill-icon">
+                        <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#fill-faq"></use>
+                      </svg><span>Store Locator</span></a></li>
                   
                     <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
                       <a class="sidebar-link sidebar-title link-nav" href="<?php echo site_url('site/editPage/terms-conditions'); ?>">
@@ -108,6 +127,14 @@
                       <svg class="fill-icon">
                         <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#fill-faq"></use>
                       </svg><span>FAQ</span></a></li>
+                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="<?php echo base_url();?>seo_meta_keyword">
+                      <svg class="stroke-icon">
+                        <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#stroke-faq"></use>
+                      </svg>
+                      <svg class="fill-icon">
+                        <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#fill-faq"></use>
+                      </svg><span>Seo MetaKeyward</span></a>
+                    </li>
                 </ul>
               </div>
               <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
