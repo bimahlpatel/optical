@@ -46,6 +46,19 @@
                         <li><a href="<?php echo base_url()?>product/addproduct">Add Products</a></li>                
                       </ul>
                   </li>
+                  <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title" href="#">
+                      <svg class="stroke-icon">
+                        <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#stroke-ecommerce"></use>
+                      </svg>
+                      <svg class="fill-icon">
+                        <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#fill-ecommerce"></use>
+                      </svg><span>Contact Lenses</span></a>
+                      <ul class="sidebar-submenu">
+                        <li><a href="<?php echo base_url()?>contact_lenses/lenses_category">Lenses Category</a></li>
+                        <li><a href="<?php echo base_url()?>contact_lenses/lenses_subcategory">Lenses SubCategory</a></li>
+                        <li><a href="<?php echo base_url()?>contact_lenses/lenses_product">Lenses Product</a></li>
+                      </ul>
+                  </li>
                   <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
                       <a class="sidebar-link sidebar-title link-nav" href="<?php echo base_url()?>brand">
                       <svg class="stroke-icon">
