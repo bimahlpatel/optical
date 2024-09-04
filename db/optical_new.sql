@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 02, 2024 at 07:59 PM
+-- Generation Time: Sep 04, 2024 at 07:34 PM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -86,7 +86,9 @@ INSERT INTO `administration_log` (`id`, `adminid`, `login_at`, `logout_at`, `ser
 (19, 1, '2024-08-31 17:11:33', NULL, '::1'),
 (20, 1, '2024-09-01 05:59:18', NULL, '::1'),
 (21, 1, '2024-09-01 17:53:45', NULL, '::1'),
-(22, 1, '2024-09-02 16:56:15', NULL, '::1');
+(22, 1, '2024-09-02 16:56:15', NULL, '::1'),
+(23, 1, '2024-09-03 19:24:02', NULL, '::1'),
+(24, 1, '2024-09-04 17:07:53', NULL, '::1');
 
 -- --------------------------------------------------------
 
@@ -110,6 +112,22 @@ INSERT INTO `banner` (`id`, `title`, `sub_title`, `image`, `is_active`) VALUES
 (1, 'tets', 'test', 'banner43.jpg', 1),
 (2, 'home 1', 'home 1', 'banner11.jpg', 0),
 (3, 'home 2', 'test', 'banner44.jpg', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blog_master`
+--
+
+CREATE TABLE `blog_master` (
+  `blog_id` int(11) NOT NULL,
+  `blog_title` varchar(255) NOT NULL,
+  `author` varchar(255) NOT NULL,
+  `blog_description` longtext NOT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT 0,
+  `created_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_date` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -260,10 +278,22 @@ CREATE TABLE `contact_enquiry` (
 CREATE TABLE `lenses_category_master` (
   `lense_cat_id` int(11) NOT NULL,
   `lense_cat_name` varchar(255) NOT NULL,
+  `lenses_cat_slug` varchar(255) NOT NULL,
   `is_active` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0=active 1=inactive',
   `created_date` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `lenses_category_master`
+--
+
+INSERT INTO `lenses_category_master` (`lense_cat_id`, `lense_cat_name`, `lenses_cat_slug`, `is_active`, `created_date`, `updated_date`) VALUES
+(1, 'DISPOSABILITY', 'disposability', 0, '2024-09-03 19:49:05', '2024-09-03 19:52:13'),
+(2, 'BRANDS', 'brands', 0, '2024-09-03 19:49:45', '2024-09-03 19:52:59'),
+(3, 'POWER', 'power', 0, '2024-09-03 19:50:26', '2024-09-03 19:53:01'),
+(4, 'LENS SOLUTION', 'lens-solution', 0, '2024-09-03 19:50:40', '2024-09-03 19:53:03'),
+(5, 'COLOR', 'color', 0, '2024-09-03 19:50:54', '2024-09-03 19:53:04');
 
 -- --------------------------------------------------------
 
@@ -275,9 +305,93 @@ CREATE TABLE `lenses_subcategory_master` (
   `sub_category_id` int(11) NOT NULL,
   `lenses_cat_id` int(11) NOT NULL,
   `lenses_cat_type` varchar(255) NOT NULL,
+  `lense_sub_cat_slug` varchar(255) NOT NULL,
   `is_active` tinyint(1) NOT NULL DEFAULT 0,
   `created_date` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_date` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `lenses_subcategory_master`
+--
+
+INSERT INTO `lenses_subcategory_master` (`sub_category_id`, `lenses_cat_id`, `lenses_cat_type`, `lense_sub_cat_slug`, `is_active`, `created_date`, `updated_date`) VALUES
+(1, 1, 'Monthly', 'monthly', 0, '2024-09-03 20:55:04', '2024-09-04 00:01:28'),
+(2, 1, 'Monthly Day and Night', 'monthly-day-and-night', 0, '2024-09-03 20:32:28', '2024-09-04 00:02:28'),
+(3, 1, 'Daily', 'daily', 0, '2024-09-03 20:33:03', '2024-09-04 00:03:03'),
+(4, 2, 'Aqualens', 'aqualens', 0, '2024-09-03 20:34:04', '2024-09-04 00:04:04');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lense_product`
+--
+
+CREATE TABLE `lense_product` (
+  `lp_id` int(11) NOT NULL,
+  `lp_name` varchar(255) NOT NULL,
+  `lp_slug` varchar(255) NOT NULL,
+  `lp_cat_id` int(11) NOT NULL,
+  `lp_subcat_id` int(11) NOT NULL,
+  `lp_description` longtext NOT NULL,
+  `lp_image` varchar(255) NOT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0=Active 1=inactive',
+  `created_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_date` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `lense_product`
+--
+
+INSERT INTO `lense_product` (`lp_id`, `lp_name`, `lp_slug`, `lp_cat_id`, `lp_subcat_id`, `lp_description`, `lp_image`, `is_active`, `created_date`, `updated_date`) VALUES
+(1, 'Aqualens NXT Monthly', 'aqualens-nxt-monthly', 1, 1, '<p>Manufacturer:&nbsp;CVI&nbsp;India&nbsp;Pvt&nbsp;Ltd.&nbsp;Imported&nbsp;&amp;&nbsp;marketed&nbsp;by&nbsp;CVI&nbsp;India&nbsp;Pvt&nbsp;Ltd.,&nbsp;Marketed&nbsp;By:Lenskart&nbsp;Solutions&nbsp;Pvt.&nbsp;Ltd.</p>\r\n', '0', 1, '2024-09-04 18:12:00', '2024-09-04 21:42:00'),
+(2, 'Aqualens 24H Toric Monthly', 'aqualens-24h-toric-monthly', 1, 1, '<p>Manufacturer:&nbsp;CVI&nbsp;India&nbsp;Pvt&nbsp;Ltd.&nbsp;Imported&nbsp;&amp;&nbsp;marketed&nbsp;by&nbsp;CVI&nbsp;India&nbsp;Pvt&nbsp;Ltd.,&nbsp;Marketed&nbsp;By:Lenskart&nbsp;Solutions&nbsp;Pvt.&nbsp;Ltd.&nbsp;support@lenskart.com.</p>\r\n', 'FAQs-rafiki.png', 1, '2024-09-04 18:18:53', '2024-09-04 21:48:53');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lense_product_detail`
+--
+
+CREATE TABLE `lense_product_detail` (
+  `lpd_id` int(11) NOT NULL,
+  `pro_id` int(11) NOT NULL,
+  `product_type` varchar(255) NOT NULL DEFAULT 'N/A',
+  `type` varchar(255) NOT NULL DEFAULT 'N/A',
+  `manufacturer_details` varchar(255) NOT NULL DEFAULT 'N/A',
+  `country_of_origin` varchar(255) NOT NULL DEFAULT 'N/A',
+  `model_no` varchar(255) NOT NULL DEFAULT 'N/A',
+  `base_curve` varchar(255) NOT NULL DEFAULT 'N/A',
+  `diameter` varchar(255) NOT NULL DEFAULT 'N/A',
+  `lens_material` varchar(255) DEFAULT 'N/A',
+  `packaging` varchar(255) NOT NULL DEFAULT 'N/A',
+  `usage_duration` varchar(255) NOT NULL DEFAULT 'N/A',
+  `water_content` varchar(255) NOT NULL DEFAULT 'N/A',
+  `gender` varchar(255) NOT NULL DEFAULT 'N/A',
+  `created_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_date` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `lense_product_detail`
+--
+
+INSERT INTO `lense_product_detail` (`lpd_id`, `pro_id`, `product_type`, `type`, `manufacturer_details`, `country_of_origin`, `model_no`, `base_curve`, `diameter`, `lens_material`, `packaging`, `usage_duration`, `water_content`, `gender`, `created_date`, `updated_date`) VALUES
+(1, 2, '', '', '', '', '', '', '', '', '', '', '', '', '2024-09-04 22:57:29', '2024-09-04 22:57:29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lense_product_gallery`
+--
+
+CREATE TABLE `lense_product_gallery` (
+  `lpg_id` int(11) NOT NULL,
+  `product_lense_id` int(11) NOT NULL,
+  `lp_img_name` varchar(255) NOT NULL,
+  `lp_img_path` varchar(255) NOT NULL,
+  `uploaded_on` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -360,7 +474,8 @@ CREATE TABLE `product_frame_detail` (
 --
 
 INSERT INTO `product_frame_detail` (`pf_id`, `product_id`, `model_no`, `frame_type`, `frame_shape`, `frame_size`, `frame_width`, `frame_dimensions`, `frame_colour`, `weight`, `weight_group`, `material`, `frame_material`, `temple_material`, `prescription_type`, `frame_style`) VALUES
-(1, 1, '', 'Full Rim', 'Square', 'Medium', ' 135 mm', '53-16-142', 'Black', '16 gm', 'Light', 'Ultem & Stainless Steel', 'Ultem', 'Stainless Steel', 'Bifocal / Progressive', 'Standard');
+(1, 1, '', 'Full Rim', 'Square', 'Medium', ' 135 mm', '53-16-142', 'Black', '16 gm', 'Light', 'Ultem & Stainless Steel', 'Ultem', 'Stainless Steel', 'Bifocal / Progressive', 'Standard'),
+(2, 2, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -463,6 +578,12 @@ ALTER TABLE `banner`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `blog_master`
+--
+ALTER TABLE `blog_master`
+  ADD PRIMARY KEY (`blog_id`);
+
+--
 -- Indexes for table `brand_master`
 --
 ALTER TABLE `brand_master`
@@ -504,6 +625,24 @@ ALTER TABLE `lenses_category_master`
 --
 ALTER TABLE `lenses_subcategory_master`
   ADD PRIMARY KEY (`sub_category_id`);
+
+--
+-- Indexes for table `lense_product`
+--
+ALTER TABLE `lense_product`
+  ADD PRIMARY KEY (`lp_id`);
+
+--
+-- Indexes for table `lense_product_detail`
+--
+ALTER TABLE `lense_product_detail`
+  ADD PRIMARY KEY (`lpd_id`);
+
+--
+-- Indexes for table `lense_product_gallery`
+--
+ALTER TABLE `lense_product_gallery`
+  ADD PRIMARY KEY (`lpg_id`);
 
 --
 -- Indexes for table `meta_keywords`
@@ -561,13 +700,19 @@ ALTER TABLE `administration`
 -- AUTO_INCREMENT for table `administration_log`
 --
 ALTER TABLE `administration_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `banner`
 --
 ALTER TABLE `banner`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `blog_master`
+--
+ALTER TABLE `blog_master`
+  MODIFY `blog_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `brand_master`
@@ -597,13 +742,25 @@ ALTER TABLE `contact_enquiry`
 -- AUTO_INCREMENT for table `lenses_category_master`
 --
 ALTER TABLE `lenses_category_master`
-  MODIFY `lense_cat_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `lense_cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `lenses_subcategory_master`
 --
 ALTER TABLE `lenses_subcategory_master`
-  MODIFY `sub_category_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `sub_category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `lense_product`
+--
+ALTER TABLE `lense_product`
+  MODIFY `lp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `lense_product_detail`
+--
+ALTER TABLE `lense_product_detail`
+  MODIFY `lpd_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `meta_keywords`
@@ -621,7 +778,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `product_frame_detail`
 --
 ALTER TABLE `product_frame_detail`
-  MODIFY `pf_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `pf_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product_gallery`

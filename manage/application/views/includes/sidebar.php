@@ -57,6 +57,7 @@
                         <li><a href="<?php echo base_url()?>contact_lenses/lenses_category">Lenses Category</a></li>
                         <li><a href="<?php echo base_url()?>contact_lenses/lenses_subcategory">Lenses SubCategory</a></li>
                         <li><a href="<?php echo base_url()?>contact_lenses/lenses_product">Lenses Product</a></li>
+                        <li><a href="<?php echo base_url()?>contact_lenses/add_lenses_product">Add Contact Leses</a></li>
                       </ul>
                   </li>
                   <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>

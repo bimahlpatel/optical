@@ -81,4 +81,46 @@ Class Manage_Contact_Lenses_Model extends CI_Model {
 		return $sql_query;
 	}
 
+	public function getlesnse_subcategory($les_cat_id){
+		$query = $this->db->where('is_active', 0)
+				->where('lenses_cat_id', $les_cat_id)
+				->order_by('sub_category_id asc')
+				->get('lenses_subcategory_master');
+		return $query->result();  
+	}
+
+	/**/
+	
+	public function getlenseproductlist(){
+
+        $query = $this->db->select('p.*, lc.*,lsc.*')
+				->from('lense_product p')
+				->join('lenses_category_master lc','lc.lense_cat_id=p.lp_cat_id')
+				->join('lenses_subcategory_master lsc','lsc.sub_category_id=p.lp_subcat_id')
+				->order_by('p.lp_id desc')
+				->get()
+				->result();
+		return $query;
+	}
+
+	public function addleses_product($data){
+		$this->db->insert('lense_product',$data);
+		$category = $this->db->insert_id();
+
+		return ($this->db->affected_rows() != 1) ? false : true; 
+	}
+
+	public function lenses_product_gallary($data){
+		$this->db->insert('lense_product_gallery',$data);
+		$product_gallary = $this->db->insert_id();
+		return ($this->db->affected_rows() != 1) ? false : true; 
+	}
+
+	public function addlense_pro_specification($data){
+		$this->db->insert('lense_product_detail',$data);
+		$product_gallary = $this->db->insert_id();
+		return ($this->db->affected_rows() != 1) ? false : true; 
+	}
+
+
 }

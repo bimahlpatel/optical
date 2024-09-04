@@ -108,12 +108,12 @@ public function uploadgallary(){
 
 	  
 	$this->load->library('upload');
-		$img_directory = site_url().'assets/uploads/prid_'.$this->input->post('product_id').'/';
-
+		$img_directory = COMPANY_SITE.'assets/uploads/prid_'.$this->input->post('product_id').'/';
+	
 		if (!is_dir($img_directory))
 		{
 			if (!mkdir($img_directory, 0777, TRUE)) {
-				die('Failed to create directory: ' . $img_directory);
+				mkdir($img_directory, 0777, TRUE);
 			}
 			
 		}

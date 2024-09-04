@@ -384,4 +384,28 @@ function getsubcategory($categoryid = 0)
 	return $option;
 }
 
+function getlensesubcategory($les_categoryid = 0)
+{
+    
+	$option = "";
+	$ci =& get_instance();
+	$ci->load->database();
+	$ci->db->select('lenses_cat_type, sub_category_id');
+	$ci->db->where('lenses_cat_id', $les_categoryid);
+	$ci->db->where('is_active', 0);
+	$lenses_subcategorydetail = $ci->db->get('lenses_subcategory_master')->result();
+    
+	$option .= "<option value=''>Select Option</option>";
+
+	foreach ($lenses_subcategorydetail as $row) {
+		$option .= "<option ";
+		$option .= " value=\"" . $row->sub_category_id . "\"";
+		$option .= " >";
+		$option .= $row->lenses_cat_type;
+		$option .= "</option>";
+	}
+   
+	return $option;
+}
+
 ?>
