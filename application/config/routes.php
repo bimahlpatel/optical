@@ -53,3 +53,6 @@ $route['default_controller'] = 'Infopage';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['category/(:any)'] = 'Product/getProductByCategory/$1';
+$route['product_detail/(:any)/(:any)'] = 'infopage/get_singleproduct/$1';
+$route['store_locator'] = 'infopage/store_locator';
+$route['contact_lenses/contact-lense-type/(:any)']='Contact_Lenses/get_lense_product_byid/$1';

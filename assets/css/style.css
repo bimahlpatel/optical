@@ -121,10 +121,10 @@ h1.logo a.navbar-brand {
 .navbar-light .navbar-nav .nav-link,
 .dropdown-item {
     color: #828284;
-    font-size: 16px;
+    font-size: 15px;
     letter-spacing: 2px;
     margin: 0em 0.5em;
-    padding: 10px 25px;
+    padding: 10px 10px;
     text-transform: uppercase;
 }
 

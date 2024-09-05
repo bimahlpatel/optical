@@ -37,5 +37,40 @@ Class Site_Info_Model extends CI_Model {
 				->get();
 		return $query->row();     
 	}
+
+	/* get contact lenses category */
+	public function getcontact_lense_catlist(){
+		$query = $this->db->where('is_active', 0)
+				->order_by('lense_cat_id asc')
+				->get('lenses_category_master');
+		return $query->result(); 
+	}
+
+	public function get_sub_lenses_category($sql){
+		$q = $this->db->query($sql);
+        return $q->result();
+	}
+
+	public function get_store_location(){
+		$query = $this->db->where('is_active', 0)
+				->order_by('store_id asc')
+				->get('store_locator');
+		return $query->result(); 
+	}
+
+	public function getcontact_lense_subcatid($lense_sub_cat_slug){
+		$query = $this->db->select('sub_category_id')
+				->where('lense_sub_cat_slug', $lense_sub_cat_slug)
+				->get('lenses_subcategory_master');
+		return $query->row(); 
+	}
+
+	public function get_contact_lense_product($sub_cat_id){
+		$query = $this->db->where('is_active', 0)
+				->where('lp_subcat_id', $sub_cat_id)
+				->order_by('lp_id asc')
+				->get('lense_product');
+		return $query->result(); 
+	}
     
 }

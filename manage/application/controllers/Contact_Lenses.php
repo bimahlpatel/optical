@@ -214,4 +214,11 @@ Class Contact_Lenses extends CI_Controller {
 		redirect('contact_lenses/lenses_product');
 	}
 
+	public function editlensesproduct($id){
+		$productlist = $this->Manage_Contact_Lenses_Model->getlense_productdetails_byid($id);
+		$categorylist = $this->Manage_Contact_Lenses_Model->getmascategorylist();
+		$subcategorylist = $this->Manage_Contact_Lenses_Model->getcategorylist();
+		$this->load->view('edit_lense_product',['productlist'=>$productlist, 'categorylist'=>$categorylist, 'subcategory'=>$subcategorylist]);
+	}
+
 }

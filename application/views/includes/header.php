@@ -19,9 +19,11 @@
     <?php echo link_tag('assets/css/login_overlay.css'); ?>
     <?php echo link_tag('assets/css/style6.css'); ?>
     <?php echo link_tag('assets/css/shop.css'); ?>
+    <?php echo link_tag('assets/css/contact.css'); ?>
+    <?php echo link_tag('assets/css/checkout.css'); ?>
     <?php echo link_tag('assets/css/owl.carousel.css'); ?>
     <?php echo link_tag('assets/css/owl.theme.css'); ?>
-    <?php echo link_tag('assets/css/css/jquery-ui1.css'); ?>
+    <?php echo link_tag('assets/css/jquery-ui1.css'); ?>
     <?php echo link_tag('assets/css/easy-responsive-tabs.css'); ?>
     <?php echo link_tag('assets/css/flexslider.css'); ?>
     <?php echo link_tag('assets/css/style.css'); ?>
@@ -106,10 +108,13 @@
                                     </ul>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Contact Lenses</a>
+                                    <a class="nav-link" href="<?php echo base_url();?>Contact_Lenses">Contact Lenses</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Store Locator</a>
+                                    <a class="nav-link" href="<?php echo base_url();?>store_locator">Store Locator</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo base_url();?>store_locator">Store Locator</a>
                                 </li>
                             </ul>
 

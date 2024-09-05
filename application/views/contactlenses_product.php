@@ -11,7 +11,7 @@
 							<a href="index.html">Home</a>
 							<i>|</i>
 						</li>
-						<li>Shop</li>
+						<li>Contact Lenses</li>
 					</ul>
 				</div>
 			</div>
@@ -22,7 +22,7 @@
 		<section class="banner-bottom py-lg-5 py-3">
 			<div class="container-fluid">
 				<div class="inner-sec-shop px-lg-4 px-3">
-					<h3 class="tittle my-lg-4 mt-3">New Arrivals for you </h3>
+					<h3 class="tittle my-lg-4 mt-3">Lenses Product</h3>
 					<div class="row">
 						<!-- product left -->
 						<div class="side-bar col-lg-3">
@@ -204,15 +204,15 @@
 								</div>
 								<div class="row">
 									<!-- /womens -->
-									 <?php foreach($product_detail as $row){?>
+									 <?php foreach($contact_lense_product as $row){?>
 									<div class="col-md-3 product-men women_two shop-gd">
 										<div class="product-googles-info googles">
 											<div class="men-pro-item">
 												<div class="men-thumb-item">
-													<img src="<?php echo base_url()?>assets/uploads/product/<?php echo $row->product_image; ?>" class="img-fluid" alt="">
+													<img src="<?php echo base_url()?>assets/uploads/product/<?php echo $row->lp_image; ?>" class="img-fluid" alt="">
 													<div class="men-cart-pro">
 														<div class="inner-men-cart-pro">
-															<a href="<?php echo base_url()?>product_detail/<?php echo $row->product_title; ?>/<?php echo $row->product_id; ?>" class="link-product-add-cart">Quick View</a>
+															<a href="<?php echo base_url()?>product_detail/<?php echo $row->lp_name; ?>/<?php echo $row->lp_id ; ?>" class="link-product-add-cart">Quick View</a>
 														</div>
 													</div>
 													<span class="product-new-top">New</span>
@@ -222,10 +222,10 @@
 														<div class="grid_meta">
 															<div class="product_price">
 																<h4>
-																	<a href="<?php echo base_url()?>infopage/get_singleproduct/<?php echo $row->product_id; ?>"><?php echo $row->product_title; ?></a>
+																	<a href="<?php echo base_url()?>infopage/get_singleproduct/<?php echo $row->lp_id; ?>"><?php echo $row->lp_name; ?></a>
 																</h4>
 																<div class="grid-price mt-2">
-																	<span class="money "><?php echo $row->name;?></span>
+																	<span class="money "><?php echo $row->lp_cat_id;?></span>
 																</div>
 															</div>
 															

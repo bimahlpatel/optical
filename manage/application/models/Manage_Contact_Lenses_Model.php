@@ -122,5 +122,11 @@ Class Manage_Contact_Lenses_Model extends CI_Model {
 		return ($this->db->affected_rows() != 1) ? false : true; 
 	}
 
+	public function getlense_productdetails_byid($id){
+			$query = $this->db->where('lp_id', $id)
+					->get('lense_product');
+			return $query->row();
+	}
+
 
 }
