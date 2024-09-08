@@ -108,7 +108,7 @@ public function uploadgallary(){
 
 	  
 	$this->load->library('upload');
-		$img_directory = COMPANY_SITE.'assets/uploads/prid_'.$this->input->post('product_id').'/';
+		$img_directory = '../assets/uploads/prid_'.$this->input->post('product_id').'/';
 	
 		if (!is_dir($img_directory))
 		{

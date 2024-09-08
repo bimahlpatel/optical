@@ -141,7 +141,7 @@ Class Contact_Lenses extends CI_Controller {
 
 	  
 		//$this->load->library('upload');
-			$img_directory = COMPANY_SITE.'assets/uploads/len_pid_'.$this->input->post('product_id').'/';
+			$img_directory = '../assets/uploads/len_pid_'.$this->input->post('product_id').'/';
 
 			if (!is_dir($img_directory))
 			{

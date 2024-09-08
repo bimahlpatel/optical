@@ -21,4 +21,8 @@ Class Contact_Lenses extends CI_Controller {
         $contact_lense_product = $this->Site_Info_Model->get_contact_lense_product($contact_lense_category->sub_category_id);
         $this->load->view('contactlenses_product',['categorylist'=>$categorylist, 'contact_lense_product'=>$contact_lense_product]);
     }
+
+    public function get_lense_protype_byid(){
+        $sub_cat_slug= $this->uri->segment(2);
+    }
 }

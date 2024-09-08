@@ -22,6 +22,18 @@ Class Site_Info_Model extends CI_Model {
 				->join('category_master cm','cm.id=p.product_cat_id')
 				->join('category c','c.category_id=p.product_subcategory')
 				->where('p.isActive', 0)
+				->limit(8)
+				->get();
+		return $query->result();     
+	}
+
+	public function getnewproductlist(){
+		$query = $this->db->select('p.*, cm.name, c.category_name, c.category_type, c.category_slug')
+				->from('product p')
+				->join('category_master cm','cm.id=p.product_cat_id')
+				->join('category c','c.category_id=p.product_subcategory')
+				->where('p.isActive', 0)
+				->limit(8)
 				->get();
 		return $query->result();     
 	}

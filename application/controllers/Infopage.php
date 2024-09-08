@@ -12,7 +12,8 @@ Class Infopage extends CI_Controller {
 		$categorylist = $this->Site_Info_Model->getcategorylist();
 		$bannerlist = $this->Site_Info_Model->getbannerlist();
 		$newproductlist = $this->Site_Info_Model->getproductlist();
-		$this->load->view('index',['categorylist'=>$categorylist, 'bannerlist'=>$bannerlist, 'productlist'=>$newproductlist]);
+		$newarrproductlist = $this->Site_Info_Model->getnewproductlist();
+		$this->load->view('index',['categorylist'=>$categorylist, 'bannerlist'=>$bannerlist, 'productlist'=>$newproductlist, 'newarrproductlist'=>$newarrproductlist]);
 	}
 
 	public function get_singleproduct(){

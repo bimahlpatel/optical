@@ -113,9 +113,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?php echo base_url();?>store_locator">Store Locator</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo base_url();?>store_locator">Store Locator</a>
-                                </li>
+                               
                             </ul>
 
                         </div>
