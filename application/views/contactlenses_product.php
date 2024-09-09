@@ -212,17 +212,16 @@
 													<img src="<?php echo base_url()?>assets/uploads/product/<?php echo $row->lp_image; ?>" class="img-fluid" alt="">
 													<div class="men-cart-pro">
 														<div class="inner-men-cart-pro">
-															<a href="<?php echo base_url()?>product_detail/<?php echo $row->lp_name; ?>/<?php echo $row->lp_id ; ?>" class="link-product-add-cart">Quick View</a>
+															<a href="<?php echo base_url()?>contact_lenses/<?php echo $row->lp_slug; ?>" class="link-product-add-cart">Quick View</a>
 														</div>
 													</div>
-													<span class="product-new-top">New</span>
 												</div>
 												<div class="item-info-product">
 													<div class="info-product-price">
 														<div class="grid_meta">
 															<div class="product_price">
 																<h4>
-																	<a href="<?php echo base_url()?>infopage/get_singleproduct/<?php echo $row->lp_id; ?>"><?php echo $row->lp_name; ?></a>
+																	<a href="<?php echo base_url()?>contact_lenses/<?php echo $row->lp_slug; ?>"><?php echo $row->lp_name; ?></a>
 																</h4>
 																<div class="grid-price mt-2">
 																	<span class="money "><?php echo $row->lp_cat_id;?></span>

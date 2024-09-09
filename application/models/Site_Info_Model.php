@@ -2,6 +2,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 Class Site_Info_Model extends CI_Model {
 
+	public function getcompanysetting(){
+		$query = $this->db->get('company_setting');
+		return $query->row();    
+	}
+
     public function getcategorylist(){
 		$query = $this->db->where('isActive', 0)
 				->order_by('id  asc')
@@ -83,6 +88,27 @@ Class Site_Info_Model extends CI_Model {
 				->order_by('lp_id asc')
 				->get('lense_product');
 		return $query->result(); 
+	}
+
+	public function get_contact_lense_product_detail($slug_name){
+
+		$query = $this->db->select('pl.*, lpc.*, lsm.*')
+				->from('lense_product pl')
+				->join('lense_product_detail lpc','lpc.pro_id=pl.lp_id')
+				->join('lenses_subcategory_master lsm','lsm.sub_category_id=pl.lp_subcat_id')
+				->where('pl.is_active', 0)
+				->like('pl.lp_slug', $slug_name)
+				->get();
+		return $query->row(); 
+
+	}
+
+	public function getLenseProductGallary($lpid){
+		$query =$this->db->select('*')
+				->where('product_lense_id', $lpid)
+				->order_by('lpg_id  asc')
+				->get('lense_product_gallery');
+		return $query->result();  
 	}
     
 }

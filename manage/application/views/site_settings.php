@@ -68,18 +68,66 @@
                             <input class="form-control" type="text" name="c_address" id="c_address" value="<?php if(isset($sitedetails->company_address)) { echo $sitedetails->company_address;} ?>" placeholder="Home Address">
                           </div>
                         </div>
-                        <div class="col-sm-6 col-md-4">
+                        <div class="col-sm-6 col-md-6">
                           <div class="mb-3">
                             <label class="form-label">City</label>
                             <input class="form-control" type="text" name="c_city" id="c_city" value="<?php if(isset($sitedetails->company_city)) { echo $sitedetails->company_city;} ?>" placeholder="City">
                           </div>
                         </div>
-                        <div class="col-sm-6 col-md-3">
+                        <div class="col-sm-6 col-md-6">
                           <div class="mb-3">
                             <label class="form-label">Postal Code</label>
                             <input class="form-control" type="number" name="c_pincode" id="c_pincode" value="<?php if(isset($sitedetails->company_pincode)) { echo $sitedetails->company_pincode;} ?>" placeholder="ZIP Code">
                           </div>
                         </div>
+                        <div class="col-sm-6 col-md-6">
+                          <div class="mb-3">
+                            <label class="form-label">Facebook Link</label>
+                            <input class="form-control" type="text" name="c_facebook_link" id="c_facebook_link" value="<?php if(isset($sitedetails->facebook_link)) { echo $sitedetails->facebook_link;} ?>" placeholder="Facebook Link">
+                          </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                          <div class="mb-3">
+                            <label class="form-label">Linkedin Link</label>
+                            <input class="form-control" type="text" name="c_linkedin_link" id="c_linkedin_link" value="<?php if(isset($sitedetails->linkedin_link)) { echo $sitedetails->linkedin_link;} ?>" placeholder="Linkedin Link">
+                          </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-6">
+                          <div class="mb-3">
+                            <label class="form-label">Pintrest Link</label>
+                            <input class="form-control" type="text" name="pinterest_link" id="pinterest_link" value="<?php if(isset($sitedetails->pinterest_link)) { echo $sitedetails->pinterest_link;} ?>" placeholder="Pintrest Link">
+                          </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-6">
+                          <div class="mb-3">
+                            <label class="form-label">Instagram Link</label>
+                            <input class="form-control" type="text" name="c_instagram_link" id="c_instagram_link" value="<?php if(isset($sitedetails->instagram_link)) { echo $sitedetails->instagram_link;} ?>" placeholder="Instragram Link">
+                          </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-6">
+                          <div class="mb-3">
+                            <label class="form-label">Google+ Link</label>
+                            <input class="form-control" type="text" name="c_google_link" id="c_google_link" value="<?php if(isset($sitedetails->google_link)) { echo $sitedetails->google_link;} ?>" placeholder="Google+ Link">
+                          </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-6">
+                          <div class="mb-3">
+                            <label class="form-label">Youtube Link</label>
+                            <input class="form-control" type="text" name="youtube_link" id="youtube_link" value="<?php if(isset($sitedetails->youtube_link)) { echo $sitedetails->youtube_link;} ?>" placeholder="Youtube Link">
+                          </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-6">
+                          <div class="mb-3">
+                            <label class="form-label">Twitter Link</label>
+                            <input class="form-control" type="text" name="twitter_link" id="twitter_link" value="<?php if(isset($sitedetails->twitter_link)) { echo $sitedetails->twitter_link;} ?>" placeholder="Twitter Link">
+                          </div>
+                        </div>
+                        
                         <div class="col-md-12">
                           <div>
                             <label class="form-label">About Me</label>

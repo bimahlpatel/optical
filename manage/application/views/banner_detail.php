@@ -38,21 +38,16 @@
                          <div class="card-body">
                              <div class="list-product-header">
                                  <div>
-                                     <div class="light-box"><a data-bs-toggle="collapse" href="#collapseProduct"
-                                             role="button" aria-expanded="false" aria-controls="collapseProduct"><i
-                                                 class="filter-icon show" data-feather="filter"></i><i
-                                                 class="icon-close filter-close hide"></i></a></div><a class="btn btn-primary f-w-500" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#dashboard8"><i class="fa fa-plus pe-2"></i>Add Banner</a>
+                                    <a class="btn btn-primary f-w-500" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#dashboard8"><i class="fa fa-plus pe-2"></i>Add Banner</a>
                                  </div>
                                  
                              </div>
                              <div class="list-product list-category">
-                                 <table class="table" id="project-status">
+                                <table class="table" id="project-status">
                                      <thead>
                                          <tr>
                                              <th>
-                                                 <div class="form-check">
-                                                     <input class="form-check-input checkbox-primary" type="checkbox">
-                                                 </div>
+                                                <span class="f-light f-w-600">No</span>
                                              </th>
                                              <th> <span class="f-light f-w-600">Banner Title</span></th>
                                              <th> <span class="f-light f-w-600">Banner Subtitle</span></th>
@@ -63,12 +58,13 @@
                                      </thead>
                                      <tbody>
                                         <?php if(count($bannerdetails) > 0){
+                                            $cnt=1; 
                                             foreach($bannerdetails as $row){?>
 
                                             <tr class="product-removes">
                                              <td>
                                                  <div class="form-check">
-                                                     <input class="form-check-input checkbox-primary" type="checkbox">
+                                                 <p><?php echo $cnt;?></p>
                                                  </div>
                                              </td>
                                              <td>
@@ -95,7 +91,7 @@
                                              </td>
                                          </tr>
 
-                                           <?php }
+                                           <?php $cnt++; }
                                         }?>
                                          
                                          
@@ -239,14 +235,18 @@
             <?php
         include_once(APPPATH.'views/includes/footer.php');
     ?>
-    <script src="<?php echo base_url('assets/js/datatable/datatables/jquery.dataTables.min.js')?>"></script>
-    <script src="<?php echo base_url('assets/js/datatable/datatables/dataTables.js')?>"></script>
-    <script src="<?php echo base_url('assets/js/datatable/datatables/dataTables.select.js')?>"></script>
-    <script src="<?php echo base_url('assets/js/datatable/datatables/select.bootstrap5.js')?>"></script>
-    <script src="<?php echo base_url('assets/js/datatable/datatables/datatable.custom.js')?>"></script>
-    <script src="<?php echo base_url('assets/js/sweet-alert/sweetalert.min.js')?>"></script>
-    <script src="<?php echo base_url('assets/js/trash_popup.js')?>"></script>
-        <script src="<?php echo base_url('assets/js/editors/quill.js')?>"></script>
+   <script src="<?php echo base_url('assets/js/datatable/datatables/jquery.dataTables.min.js')?>"></script>
+             <script src="<?php echo base_url('assets/js/datatable/datatables/dataTables.js')?>"></script>
+             <script src="<?php echo base_url('assets/js/datatable/datatables/dataTables.select.js')?>"></script>
+             <script src="<?php echo base_url('assets/js/datatable/datatables/select.bootstrap5.js')?>"></script>
+             <script src="<?php echo base_url('assets/js/datatable/datatables/datatable.custom.js')?>"></script>
+             <script src="<?php echo base_url('assets/js/sweet-alert/sweetalert.min.js')?>"></script>
+             <script src="<?php echo base_url('assets/js/trash_popup.js')?>"></script>
+             <script src="<?php echo base_url('assets/js/js-datatables/simple-datatables@latest.js')?>"></script>
+             <script src="<?php echo base_url('assets/js/custom-list-product.js')?>"></script>
+             <script src="<?php echo base_url('assets/js/ecommerce.js')?>"></script>
+             <script src="<?php echo base_url('assets/js/editors/quill.js')?>"></script>
+             <script src="<?php echo base_url('assets/js/tooltip-init.js')?>"></script>
         
     <script>
          var editor10 = new Quill("#editor10", {

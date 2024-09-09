@@ -40,10 +40,7 @@
                          <div class="card-body">
                              <div class="list-product-header">
                                  <div>
-                                     <div class="light-box"><a data-bs-toggle="collapse" href="#collapseProduct"
-                                             role="button" aria-expanded="false" aria-controls="collapseProduct"><i
-                                                 class="filter-icon show" data-feather="filter"></i><i
-                                                 class="icon-close filter-close hide"></i></a></div><a
+                                     <a
                                          class="btn btn-primary f-w-500" href="javascript:void(0)"
                                          data-bs-toggle="modal" data-bs-target="#dashboard8"><i
                                              class="fa fa-plus pe-2"></i>Add Brand</a>

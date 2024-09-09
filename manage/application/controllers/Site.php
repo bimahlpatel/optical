@@ -28,6 +28,13 @@ Class Site extends CI_Controller {
 			'company_pincode' => $_REQUEST['c_pincode'],
 			'about_company' => $_REQUEST['c_about'],
 			'company_contact' => $_REQUEST['c_contact'],
+			'facebook_link' => $_REQUEST['c_facebook_link'],
+			'linkedin_link' => $_REQUEST['c_linkedin_link'],
+			'pinterest_link' => $_REQUEST['c_pinterest_link'],
+			'instagram_link' => $_REQUEST['c_instagram_link'],
+			'google_link' => $_REQUEST['c_google_link'],
+			'youtube_link' => $_REQUEST['c_youtube_link'],
+			'twitter_link' => $_REQUEST['c_twitter_link'],
 			
 		);
 		$response = $this->Manage_Site_Model->company_setting($_REQUEST['c_id'], $data);

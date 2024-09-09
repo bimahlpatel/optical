@@ -13,7 +13,8 @@ Class Product extends CI_Controller {
         $categorylist = $this->Site_Info_Model->getcategorylist();
         $category_id = $this->Site_Product_Model->getCategoryid($category);
         $category_product = $this->Site_Product_Model->getproductBYcategoryID($category_id->id);
-        $this->load->view('category_product', ['categorylist'=>$categorylist,'product_detail'=>$category_product]);
+        $companysetting = $this->Site_Info_Model->getcompanysetting();
+        $this->load->view('category_product', ['categorylist'=>$categorylist,'product_detail'=>$category_product, 'companysetting'=>$companysetting]);
     }
 
 }
