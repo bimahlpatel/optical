@@ -162,5 +162,36 @@ public function uploadgallary(){
          }
       }
 }
+public function uploaddndfile() {
+	$this->load->library('csvimport');
+
+	$file_data = $this->csvimport->get_array($_FILES["smsfile"]["tmp_name"]);
+	
+	$wheredata = array();
+	$cnt = 0;
+	foreach ($file_data as $row) {
+		
+		$csvData[] = array(
+			'product_title' => $row['product_title'],
+			'product_slug' => str_replace(" ", "-", strtolower($row['product_title'])),
+			'product_sku' => $row['product_sku'],
+			'product_cat_id' => $row['product_cat_id'],
+			'product_subcategory' => $row['product_subcategory'],
+			'product_description' =>$row['product_description'],
+			'product_image'=>$row['product_image'],
+			
+		);
+	}
+	
+	$response = $this->Manage_Product_Model->uploaddndfile($csvData);
+
+	if ($response == true) {
+		echo json_encode(array("success" => true, "message" => $cnt . " - numbers added to DND list."));
+		die;
+	} else {
+		echo json_encode(array("success" => false, "message" => "Ops! Something goes wrong."));
+		die;
+	}
+}
 
 }

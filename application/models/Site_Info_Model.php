@@ -110,5 +110,19 @@ Class Site_Info_Model extends CI_Model {
 				->get('lense_product_gallery');
 		return $query->result();  
 	}
+
+	public function addeyecheckup($data){
+		$this->db->insert('eye_checkup_appointment',$data);
+		$eyechk = $this->db->insert_id();
+
+		return ($this->db->affected_rows() != 1) ? false : true; 
+	}
+
+	public function addvisioncheckup($data){
+		$this->db->insert('inquiry',$data);
+		$inquiry = $this->db->insert_id();
+
+		return ($this->db->affected_rows() != 1) ? false : true; 
+	}
     
 }

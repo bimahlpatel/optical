@@ -128,5 +128,14 @@ Class Manage_Contact_Lenses_Model extends CI_Model {
 			return $query->row();
 	}
 
+	public function uploaddndfile($data = '') {
+		foreach($data  as $key=>$row){
+			$this->db->insert('lense_product',$row);
+		}
+		
+			
+			return true;
+		
+	}
 
 }

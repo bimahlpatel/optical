@@ -28,6 +28,8 @@
     <?php echo link_tag('assets/css/flexslider.css'); ?>
     <?php echo link_tag('assets/css/style.css'); ?>
     <?php echo link_tag('assets/css/fontawesome-all.css'); ?>
+    <?php echo link_tag('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.min.css');?>
+    <?php echo link_tag('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.css');?>
     <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
     <link
         href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
@@ -66,11 +68,24 @@
                                     <a class="nav-link" href="about.html">About</a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                   
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Glasses
+                                        </a>
+                                        
                                     </a>
-                                    <ul class="dropdown-menu mega-menu ">
+                                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                            <?php foreach($categorylist as $row){?>
+                                                <li>
+                                                    <a href="<?php echo base_url()?>category/<?php echo $row->category_slug ?>" class="dropdown-item"><?php echo $row->name;?></a>
+                                                </li>
+                                            <?php } ?>
+                                        </ul>
+                                        </li>
+                                    </ul>
+                                    <!--<ul class="dropdown-menu mega-menu ">
                                         <li>
                                             <div class="row">
                                                 <div class="col-md-4 media-list span4 text-left">
@@ -105,7 +120,7 @@
                                             </div>
                                             <hr>
                                         </li>
-                                    </ul>
+                                    </ul>-->
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?php echo base_url();?>Contact_Lenses">Contact Lenses</a>
@@ -113,6 +128,28 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?php echo base_url();?>store_locator">Store Locator</a>
                                 </li>
+                                <ul class="navbar-nav">
+                                    <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Service
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-dark p-2" aria-labelledby="navbarDarkDropdownMenuLink">
+                                        <li><a class="dropdown-item" href="javascript:void(0)" data-toggle="modal" data-target="#editdashboard8">Free Eye Chekup</a></li>
+                                        <li><a class="dropdown-item" href="javascript:void(0)" data-toggle="modal" data-target="#editdashboard9">Vision Thrapist</a></li>
+                                    </ul>
+                                    </li>
+                                </ul>
+                                <ul class="navbar-nav">
+                                    <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
+                                        Others
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                        <li><a class="dropdown-item" href="#">Blog</a></li>
+                                        <li><a class="dropdown-item" href="<?php echo base_url();?>faqs">Faqs</a></li>
+                                    </ul>
+                                    </li>
+                                </ul>
                                
                             </ul>
 

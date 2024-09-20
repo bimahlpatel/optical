@@ -169,7 +169,7 @@ h1.logo a.navbar-brand {
 /*-- //mega-menu--*/
 
 .nav-mega .dropdown {
-    position: static;
+    position: relative;
 }
 
 .nav-mega .dropdown-menu.mega-menu {
@@ -2382,3 +2382,55 @@ ul.links li a:hover {
 }
 
 /*-- //responsive media queries --*/
+
+#accordion .card-header {
+    margin-bottom: 8px;
+  }
+  #accordion .accordion-title {
+    position: relative;
+    display: block;
+    padding: 8px 0 8px 50px;
+    background: #213744;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    width: 100%;
+    text-align: left;
+    transition: all 0.4s ease-in-out;
+  }
+  #accordion .accordion-title i {
+    position: absolute;
+    width: 40px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    color: #fff;
+    background: radial-gradient(rgba(33, 55, 68, 0.8), #213744);
+    text-align: center;
+    border-right: 1px solid transparent;
+  }
+  #accordion .accordion-title:hover {
+    padding-left: 60px;
+    background: #213744;
+    color: #fff;
+  }
+  #accordion .accordion-title:hover i {
+    border-right: 1px solid #fff;
+  }
+  #accordion [aria-expanded=true] {
+    background: #24b365;
+    color: #000;
+  }
+  #accordion [aria-expanded=true] i {
+    color: #000;
+    background: #24b365;
+  }
+  #accordion [aria-expanded=true] i:before {
+    content: "";
+  }
+  #accordion .accordion-body {
+    padding: 40px 55px;
+  }

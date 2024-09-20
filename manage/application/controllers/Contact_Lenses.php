@@ -220,5 +220,34 @@ Class Contact_Lenses extends CI_Controller {
 		$subcategorylist = $this->Manage_Contact_Lenses_Model->getcategorylist();
 		$this->load->view('edit_lense_product',['productlist'=>$productlist, 'categorylist'=>$categorylist, 'subcategory'=>$subcategorylist]);
 	}
+	public function uploaddndfile() {
+		$this->load->library('csvimport');
+	
+		$file_data = $this->csvimport->get_array($_FILES["smsfile"]["tmp_name"]);
+		
+		$wheredata = array();
+		$cnt = 0;
+		foreach ($file_data as $row) {
+			
+			$csvData[] = array(
 
+			'lp_name' => $row['lp_name'],
+			'lp_slug' => str_replace(" ","-", strtolower($row['lp_name'])),
+			'lp_cat_id' => $row['lp_cat_id'],
+			'lp_subcat_id' => $row['lp_subcat_id'],
+			'lp_description' =>$row['lp_description'],
+			'lp_image'=>$row['lp_image'],
+			);
+		}
+		
+		$response = $this->Manage_Contact_Lenses_Model->uploaddndfile($csvData);
+	
+		if ($response == true) {
+			echo json_encode(array("success" => true, "message" => $cnt . " - numbers added to DND list."));
+			die;
+		} else {
+			echo json_encode(array("success" => false, "message" => "Ops! Something goes wrong."));
+			die;
+		}
+	}
 }

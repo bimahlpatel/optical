@@ -92,4 +92,14 @@ Class Manage_Product_Model extends CI_Model {
 		return ($this->db->affected_rows() != 1) ? false : true; 
 	}
 
+	public function uploaddndfile($data = '') {
+		foreach($data  as $key=>$row){
+			$this->db->insert('product',$row);
+		}
+		
+			
+			return true;
+		
+	}
+
 }

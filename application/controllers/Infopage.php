@@ -33,4 +33,34 @@ Class Infopage extends CI_Controller {
 		$this->load->view('store_locator',['categorylist'=>$categorylist,'store_location'=>$store_location, 'companysetting'=>$companysetting]);
 	}
 
+	public function add_eye_checkup(){
+		$data = array(
+			'app_name' => $this->input->post('fullname'),
+			'app_mobile' => $this->input->post('mobile'),
+			'app_date' => $this->input->post('appdate'),
+			'app_time' => $this->input->post('apptime'),
+			'created_date' =>  date('Y-m-d H:i:s'),
+		);
+		
+		$response = $this->Site_Info_Model->addeyecheckup($data);
+		redirect('Infopage');
+		
+	}
+	public function add_vision_checkup(){
+		$data = array(
+			'inq_name' => $this->input->post('fullname'),
+			'inq_mobile' => $this->input->post('mobile'),
+			'inq_description' => $this->input->post('desc'),
+			'created_date' =>  date('Y-m-d H:i:s'),
+		);
+		
+		$response = $this->Site_Info_Model->addvisioncheckup($data);
+		redirect('Infopage');
+	}
+
+	public function faqs(){
+		$companysetting = $this->Site_Info_Model->getcompanysetting();
+		$this->load->view('faqs', ['companysetting'=>$companysetting]);
+	}
+
 }

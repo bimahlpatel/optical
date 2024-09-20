@@ -72,9 +72,8 @@
                         <li>
                          <a class="nav-link" href="<?php echo base_url();?>Contact_Lenses">Contact Lenses</a>
                         </li>
-                        <li>
-                            <a href="about.html">About</a>
-                        </li>
+                        <li><a class="dropdown-item" href="javascript:void(0)" data-toggle="modal" data-target="#editdashboard8">Free Eye Chekup</a></li>
+                                        <li><a class="dropdown-item" href="javascript:void(0)" data-toggle="modal" data-target="#editdashboard9">Vision Thrapist</a></li>
                         <li>
                         <a class="nav-link" href="<?php echo base_url();?>store_locator">Store Locator</a>
                         </li>
@@ -141,6 +140,81 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="editdashboard8" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="editdashboard8">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content container">
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body p-5 m-0">
+                    <h6>Free Eye CheckUp</h6>
+                    <div class="login newsletter">
+                        <form class="g-3 needs-validation" novalidate="" action="<?php echo base_url()?>infopage/add_eye_checkup" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label class="mb-2 text-left">Full Name</label>
+                                <input type="text" class="form-control" id="name" name="fullname"
+                                    aria-describedby="nameHelp" placeholder="" required="">
+                            </div>
+                            <div class="form-group">
+                                <label class="mb-2 text-left">Mobile No</label>
+                                <input type="text" class="form-control" id="mobile" name="mobile"
+                                    aria-describedby="mobileHelp" placeholder="" required="">
+                            </div>
+                            <div class="form-group">
+                                <label class="mb-2">Appointment Date</label>
+                                <input class="datepicker form-control" name="appdate" data-date-format="mm/dd/yyyy" aria-describedby="mobileHelp" placeholder="" required="">
+                            </div>
+                            <div class="form-group">
+                                <label class="mb-2">Appointment Time</label>
+                                <input class="timepicker form-control" name="apptime" id="addtime" aria-describedby="mobileHelp" placeholder="" required="">
+                            </div>
+                            <button type="submit" class="btn btn-primary submit mb-4">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="editdashboard9" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="editdashboard8">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content container">
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body p-5 m-0">
+                    <h6>Application for Vision Thrapist</h6>
+                    <div class="login newsletter">
+                    <form class="g-3 needs-validation" novalidate="" action="<?php echo base_url()?>infopage/add_vision_checkup" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label class="mb-2 text-left">Full Name</label>
+                                <input type="text" class="form-control" id="name" name="fullname"
+                                    aria-describedby="nameHelp" placeholder="" required="">
+                            </div>
+                            <div class="form-group">
+                                <label class="mb-2 text-left">Mobile No</label>
+                                <input type="text" class="form-control" id="mobile" name="mobile"
+                                    aria-describedby="mobileHelp" placeholder="" required="">
+                            </div>
+                            <div class="form-group">
+                                <label class="mb-2 text-left">Description</label>
+                                <textarea class="form-control" id="desc" name="desc"
+                                    aria-describedby="descHelp" placeholder="" required=""></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary submit mb-4">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
     <script>
     $(document).ready(function() {
         $("#myModal").modal();
@@ -155,6 +229,10 @@
     <!--//search jQuery-->
     <!-- cart-js -->
     <script src="<?php echo base_url('assets/js/minicart.js')?>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.min.js">
+        
+    </script>
     <script>
     googles.render();
 
@@ -171,6 +249,10 @@
     <!-- //cart-js -->
     <script>
     $(document).ready(function() {
+        $('.datepicker').datepicker({
+        format: "yyyy-mm-dd",
+      });
+        $('.time-picker').timepicker();
         $(".button-log a").click(function() {
             $(".overlay-login").fadeToggle(200);
             $(this).toggleClass('btn-open').toggleClass('btn-close');

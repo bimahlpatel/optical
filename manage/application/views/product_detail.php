@@ -43,6 +43,13 @@
                              <h4>Product Detail</h4>
                          </div>
                          <div class="card-body">
+                            <div class="list-product-header">
+                                 <div>
+                                     <a class="btn btn-primary f-w-500" href="javascript:void(0)" data-bs-toggle="modal"
+                                         data-bs-target="#uploadfile"><i class="fa fa-plus pe-2"></i>Upload Product</a>
+                                         <a class="btn btn-primary f-w-500" href="<?php echo base_url('assets/dndfile-sample.csv'); ?>"><i class="fa fa-plus pe-2"></i>Semple Download</a>
+                                 </div>
+                             </div>
                              <div class="table-responsive">
                                  <table class="display" id="basic-1">
                                      <thead>
@@ -301,6 +308,36 @@
                              </div>
                          </div>
                      </div>
+                     <!-- Modal -->
+<div class="modal fade text-left" id="uploadfile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel3">Upload DND Number List</h4>
+      </div>
+      <div class="modal-body">
+          <?php echo form_open_multipart('product/uploaddndfile', array('id'=>'submitForm', 'class'=>'form-horizontal', 'enctype'=>'multipart/form-data', 'novalidate'=>'novalidate')); ?>
+            
+            <div class="form-body">
+              <div class="form-group">
+                <h5>Upload File <span class="required">*</span></h5>
+                <div class="controls">
+                  <input type="file" name="smsfile" class="form-control" required data-validation-required-message="File is required" accept=".csv">
+                  <div class="help-block font-small-3"></div>
+                  <p class="text-muted font-small-2 mt-1">Upload file format .csv only</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-actions text-right pb-0">
+              <button type="button" class="btn grey btn-outline-light btn-min-width" data-bs-dismiss="modal">Close</button>
+              <button type="submit" id="submit-btn" class="btn btn-success btn-min-width">Import</button>
+            </div>
+          <?php echo form_close(); ?>
+      </div>
+    </div>
+  </div>
+</div>
                      <footer class="footer">
                          <div class="container-fluid">
                              <div class="row">
@@ -385,6 +422,49 @@
                 }
             };
              </script>
+             <script type="text/javascript">
+$(document).ready(function(){
+
+  $('#submitForm').on('submit', function(event){
+    event.preventDefault();
+
+    $.ajax({
+      url : $(this).attr('action') || window.location.pathname,
+      method:"POST",
+      data:new FormData(this),
+      dataType: "JSON",
+      contentType: false,
+      cache: false,
+      processData: false,
+      beforeSend:function(){
+        $('#submit-btn').html('Importing...');
+        $('#submit-btn').attr('disabled', true);
+      },
+      success:function(response){
+        if(response['success'] == true) {
+            $('#submitForm')[0].reset();
+            $('#submit-btn').attr('disabled', false);
+            $('#submit-btn').html('Import Done');
+            
+            toastr.success(response['message']);
+            setTimeout(function() {
+               location.reload();
+            }, 2000);
+        }
+        else {
+          toastr.error(response['message']);
+        }
+      },
+      error: function (jXHR, textStatus, errorThrown) {
+          $('#submit-btn').attr('disabled', false);
+          $('#submit-btn').html('Import');
+          toastr.error(errorThrown, 'ERROR');
+      }
+    })
+  });
+  
+});
+</script>
              </body>
 
              </html>

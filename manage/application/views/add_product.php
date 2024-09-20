@@ -210,6 +210,7 @@ $('#productcategory').on('change', function(){
       });
   });
 </script>
+
  </body>
 
  </html>
