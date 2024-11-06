@@ -59,8 +59,34 @@ Class Infopage extends CI_Controller {
 	}
 
 	public function faqs(){
+		$categorylist = $this->Site_Info_Model->getcategorylist();
 		$companysetting = $this->Site_Info_Model->getcompanysetting();
-		$this->load->view('faqs', ['companysetting'=>$companysetting]);
+		$this->load->view('faqs', ['companysetting'=>$companysetting, 'categorylist'=>$categorylist]);
 	}
+
+	public function privacy_policy(){
+		$this->load->model('Site_Info_Model');
+		$categorylist = $this->Site_Info_Model->getcategorylist();
+		$contentdetails = $this->Site_Info_Model->getpagedetails('privacy-policy');
+		$companysetting = $this->Site_Info_Model->getcompanysetting();
+		$this->load->view('privacy-policy',['contentdetails'=>$contentdetails,'companysetting'=>$companysetting, 'categorylist'=>$categorylist]);
+	}
+
+	public function about_us(){
+		$this->load->model('Site_Info_Model');
+		$categorylist = $this->Site_Info_Model->getcategorylist();
+		$contentdetails = $this->Site_Info_Model->getpagedetails('about-us');
+		$companysetting = $this->Site_Info_Model->getcompanysetting();
+		$this->load->view('about-us',['contentdetails'=>$contentdetails,'companysetting'=>$companysetting, 'categorylist'=>$categorylist]);
+	}
+
+	public function terms_conditions(){
+		$this->load->model('Site_Info_Model');
+		$categorylist = $this->Site_Info_Model->getcategorylist();
+		$contentdetails = $this->Site_Info_Model->getpagedetails('terms-conditions');
+		$companysetting = $this->Site_Info_Model->getcompanysetting();
+		$this->load->view('terms-conditions',['contentdetails'=>$contentdetails,'companysetting'=>$companysetting, 'categorylist'=>$categorylist]);
+	}
+
 
 }

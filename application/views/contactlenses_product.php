@@ -23,21 +23,10 @@
 			<div class="container-fluid">
 				<div class="inner-sec-shop px-lg-4 px-3">
 					<h3 class="tittle my-lg-4 mt-3">Lenses Product</h3>
-					<div class="row">
-						<!-- product left -->
+					<!--<div class="row">
+						
 						<div class="side-bar col-lg-3">
-							<div class="search-hotel">
-								<h3 class="agileits-sear-head">Search Here..</h3>
-								<form action="#" method="post">
-										<input class="form-control" type="search" name="search" placeholder="Search here..." required="">
-										<button class="btn1">
-												<i class="fas fa-search"></i>
-										</button>
-										<div class="clearfix"> </div>
-									</form>
-							</div>
 							
-							<!--preference -->
 							<div class="left-side">
 								<h3 class="agileits-sear-head">Deal Offer On</h3>
 								<ul>
@@ -52,8 +41,7 @@
 
 								</ul>
 							</div>
-							<!-- // preference -->
-							<!-- discounts -->
+							
 							<div class="left-side">
 								<h3 class="agileits-sear-head">Discount</h3>
 								<ul>
@@ -83,8 +71,7 @@
 									</li>
 								</ul>
 							</div>
-							<!-- //discounts -->
-							<!-- reviews -->
+							
 							<div class="customer-rev left-side">
 								<h3 class="agileits-sear-head">Customer Review</h3>
 								<ul>
@@ -140,8 +127,7 @@
 									</li>
 								</ul>
 							</div>
-							<!-- //reviews -->
-							<!-- deals -->
+							
 							<div class="deal-leftmk left-side">
 								<h3 class="agileits-sear-head">Special Deals</h3>
 								<div class="special-sec1">
@@ -185,11 +171,10 @@
 											<div class="clearfix"></div>
 										</div>
 							</div>
-							<!-- //deals -->
+							
 						</div>
-						<!-- //product left -->
-						<!--/product right-->
-						<div class="left-ads-display col-lg-9">
+-->
+						<div class="left-ads-display col-lg-12">
 							<div class="wrapper_top_shop">
 								<div class="row">
 										<div class="col-md-6 shop_left">
@@ -244,8 +229,8 @@
 						<!--//product right-->
 					</div>
 					<!--/slide-->
-				<div class="slider-img mid-sec mt-lg-5 mt-2">
-						<!--//banner-sec-->
+					<!--<div class="slider-img mid-sec mt-lg-5 mt-2">
+						
 						<h3 class="tittle text-left my-lg-4 my-3">Featured Products</h3>
 						<div class="mid-slider">
 							<div class="owl-carousel owl-theme row">
@@ -696,8 +681,8 @@
 								</div>
 							</div>
 						</div>
-					</div>
-					<!--//slider-->
+					</div>-->
+					
 				</div>
 			</div>
 		</section>

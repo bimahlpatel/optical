@@ -134,6 +134,15 @@
                         <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#fill-faq"></use>
                       </svg><span>Privacy Policy</span></a></li>
 
+                      <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                      <a class="sidebar-link sidebar-title link-nav" href="<?php echo site_url('site/editPage/about-us'); ?>">
+                      <svg class="stroke-icon">
+                        <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#stroke-faq"></use>
+                      </svg>
+                      <svg class="fill-icon">
+                        <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#fill-faq"></use>
+                      </svg><span>About Us</span></a></li>
+
                   <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="faq.html">
                       <svg class="stroke-icon">
                         <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#stroke-faq"></use>

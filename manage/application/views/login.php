@@ -40,14 +40,14 @@
                   <h4>Sign in to account</h4>
                   <p>Enter your email & password to login</p>
                   <div class="form-group">
-                    <label class="col-form-label" id="email">Email Address</label>
-                    <input class="form-control" type="email" name="emailid" id="email" required="" placeholder="Test@gmail.com" id="user-email">
+                    <label class="col-form-label" id="user-email">Email Address</label>
+                    <input class="form-control" type="email" name="emailid" id="user-email" required="" placeholder="Test@gmail.com">
                     <div class="invalid-feedback">Please enter your email id </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-form-label" for="password">Password</label>
+                    <label class="col-form-label" id="user-password">Password</label>
                     <div class="form-input position-relative">
-                      <input class="form-control" type="password" name="password" id="password" required="" placeholder="*********" id="user-password">
+                      <input class="form-control" type="password" name="password" id="user-password" required="" placeholder="*********">
                       <div class="invalid-feedback">Please enter your password </div>
                     </div>
                   </div>

@@ -11,11 +11,12 @@ Class Login extends CI_Controller {
 
 	public function validateLogin() {	
 		$emailid = $_REQUEST['emailid'];
-		$password = $_REQUEST['password'];
-			$enc_password = encryptPassword($emailid, $password);
+		$password = md5($_REQUEST['password']);
+			//$enc_password = encryptPassword($emailid, $password);
+			
 			$this->load->model('Manage_Login_Model');
-			$validate = $this->Manage_Login_Model->checklogin($emailid, $enc_password);
-				
+			$validate = $this->Manage_Login_Model->checklogin($emailid, $password);
+			
 			if($validate) {
 				$this->session->set_userdata('adminid',$validate->id);
 				$this->session->set_userdata('adminname',$validate->fullname);

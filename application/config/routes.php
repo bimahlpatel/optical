@@ -58,3 +58,4 @@ $route['store_locator'] = 'infopage/store_locator';
 $route['contact_lenses/contact-lense-type/(:any)']='Contact_Lenses/get_lense_product_byid/$1';
 $route['contact_lenses/(:any)']='Contact_Lenses/get_lense_protype_byid/$1';
 $route['faqs']='infopage/faqs';
+$route['aboutus']='infopage/about_us';

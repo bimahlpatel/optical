@@ -124,5 +124,12 @@ Class Site_Info_Model extends CI_Model {
 
 		return ($this->db->affected_rows() != 1) ? false : true; 
 	}
+
+	public function getpagedetails($pagename = ''){
+		$query = $this->db->where('option_key',$pagename)
+				->get('site_options')
+				->row();
+		return $query;      
+	}
     
 }
